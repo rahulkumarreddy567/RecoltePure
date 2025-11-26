@@ -9,6 +9,14 @@ body {
   background-color: #FEF1E1;
   color: #333;
   padding-top: 90px;
+
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh;
+  margin: 0; */
+  overflow:visible;
+
 }
 
 .navbar {
@@ -266,3 +274,187 @@ body {
   color: #666;
   margin-bottom: 10px;
 }
+
+.heading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2d3436;
+  margin-bottom: 20px;
+}
+
+
+
+/* Rahul */
+
+/* Container */
+.fm-container { max-width: 1200px; margin: 0 auto; }
+
+/* Heading */
+.fm-heading { text-align: center; color: #2d3436; font-size: 2.5rem; margin-bottom: 10px; }
+.fm-heading::after { content: ''; display: block; width: 100px; height: 3px; background: #e17055; margin: 15px auto; }
+
+/* Content layout */
+.fm-content { display: flex; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+
+/* Left section */
+.fm-left { flex: 1; min-width: 300px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 20px; }
+
+/* Featured card */
+.fm-featured { grid-column: 1; grid-row: 1 / 3; background: linear-gradient(135deg, #6c5ce7, #a29bfe); border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; color: white; display: flex; flex-direction: column; justify-content: center; }
+.fm-featured-title { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
+.fm-badge { background: #fd79a8; color: white; padding: 6px 16px; border-radius: 20px; font-weight: bold; display: inline-block; margin: 15px 0; font-size: 0.85rem; }
+.fm-featured-icon { font-size: 80px; }
+
+/* Cards */
+.fm-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative; transition: transform 0.3s; }
+.fm-card:hover { transform: translateY(-5px); }
+.fm-card img { width: 100%; height: 180px; object-fit: cover; }
+.fm-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 20px; }
+.fm-btn { background: white; color: #2d3436; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+
+/* Right section */
+.fm-right { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 25px; }
+
+/* Category cards */
+.fm-cat { display: flex; align-items: center; gap: 20px; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); transition: 0.3s; cursor: pointer; }
+.fm-cat:hover { transform: translateX(10px); }
+.fm-icon { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+
+/* Icon colors */
+.fm-cat:nth-child(1) .fm-icon { background: #ff6b6b; }
+.fm-cat:nth-child(2) .fm-icon { background: #4ecdc4; }
+.fm-cat:nth-child(3) .fm-icon { background: #95e1d3; }
+
+/* Category text */
+.fm-cat-title { color: #2d3436; font-size: 1.3rem; }
+.fm-cat-desc { color: #636e72; font-size: 0.9rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fm-left { grid-template-columns: 1fr; }
+    .fm-featured { grid-column: 1; }
+}
+
+
+/* End of Rahul */
+
+/* /*---------------------------------- Prasiddha Section ----------------------------------*/
+
+
+
+/* Wrapper instead of body */
+.homepage-wrapper {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+/* Carousel wrapper */
+.homepage-carousel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 25px;
+  padding: 50px 50px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Cards container */
+.homepage-cards {
+  display: flex;
+  gap: 20px;
+  /* overflow-x: auto; */
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+/* Individual card */
+.homepage-card {
+  flex: 0 0 180px;
+  border-radius: 18px;
+  color: #4b3f33;
+  text-align: center;
+  padding: 70px 15px 25px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+.homepage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Card image */
+.homepage-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: -50px; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Card colors */
+.homepage-pink { background: #d27576; }
+.homepage-orange { background: #f88b3d;}
+.homepage-green { background: #71d650; }
+.homepage-blue { background: #7f7ded; }
+.homepage-red { background: #de494b; }
+
+/* Order button */
+.homepage-order-btn {
+  background: #f5eee7;
+  color: #4b3f33;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.homepage-order-btn:hover {
+  background: #e0d4c6;
+  transform: scale(1.05);
+}
+
+/* Navigation buttons */
+.homepage-nav-btn {
+  background: #f5eee7;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #7a6b5b;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.homepage-nav-btn:hover {
+  color: #3b3027;
+  background: #e7ddd2;
+}
+
+/* Hide scrollbar */
+.homepage-cards::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* /*---------------------------------- Prasiddha Section End ----------------------------------*/
+
