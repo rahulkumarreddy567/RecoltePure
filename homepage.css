@@ -24,12 +24,13 @@ body {
   top: 0;                
   left: 0;
   width: 100%;
-  z-index: 1000;      
+  z-index: 100;      
   display: flex;
   justify-content: space-between;
   align-items: center; 
   padding: 15px 8%;
   background-color: #FEF1E1; 
+  border-radius: 50px;
 }
 
 
@@ -458,3 +459,475 @@ body {
 
 /* /*---------------------------------- Prasiddha Section End ----------------------------------*/
 
+/* Footer Section */
+.footer-wrapper {
+margin: 50px auto;
+padding: 0;
+box-sizing: border-box;
+width: 100%;
+max-width: 1200px;
+background-color: #FFF6ED; 
+border-radius: 20px;
+padding: 60px 10px 50px 50px;
+position: relative;
+overflow: hidden; 
+box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.leaf-decoration {
+  position: absolute;
+  color: #6a9e33;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+        .leaf-top-right {
+            top: -20px;
+            right: -20px;
+            font-size: 80px;
+            transform: rotate(45deg);
+        }
+
+        .leaf-bottom-left {
+            bottom: 60px;
+            left: -30px;
+            font-size: 100px; 
+            opacity: 0.05;
+            color: #000;
+            transform: rotate(-20deg);
+        }
+        
+        .leaf-falling-1 { bottom: 120px; left: 20px; font-size: 24px; transform: rotate(15deg); }
+        .leaf-falling-2 { bottom: 90px; left: 50px; font-size: 18px; color: #d64528; transform: rotate(-10deg); }
+        .leaf-falling-3 { bottom: 80px; left: 10px; font-size: 14px; color: #333; transform: rotate(80deg); }
+
+
+    
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+       
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        p, li, a {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+        }
+        
+        a:hover {
+            color: #6a9e33;
+            transition: 0.3s;
+        }
+
+        
+
+        .brand-col address {
+            font-style: normal;
+            margin-bottom: 25px;
+            max-width: 250px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            transition: 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .social-btn:hover {
+            background-color: #55a630;
+            color: #fff;
+        }
+
+        /* Columns 2 & 3: Links */
+        .links-col ul {
+            padding: 0;
+        }
+
+        /* Column 4: Newsletter */
+        .newsletter-text {
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form {
+            position: relative;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .newsletter-form i.fa-envelope {
+            color: #55a630;
+            margin-right: 10px;
+        }
+
+        .newsletter-form input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            padding: 10px 0;
+            font-family: 'Open Sans', sans-serif;
+            color: #555;
+        }
+
+        .newsletter-form button {
+            border: none;
+            background: transparent;
+            color: #ff9f00;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-info div {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .brand-col .logo, 
+            .social-icons, 
+            .newsletter-form {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+/* --- Bottom Bar --- */
+.footer-bottom {
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            padding-bottom: 20px;
+            
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .bottom-links a {
+            font-size: 13px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .pay-icon {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        /* Specific colors for payment icons */
+        .fa-cc-visa { color: #1a1f71; }
+        .fa-cc-mastercard { color: #eb001b; }
+        .fa-cc-paypal { color: #003087; }
+        .fa-cc-amex { color: #006fcf; }
+        .fa-bitcoin { color: #f7931a; }
+      
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px;
+    background: transparent;
+    font-family: "Poppins", sans-serif;
+    color: #1e293b;
+}
+
+/* Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #d0d5dd;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.nav-btn.active {
+    background: #1e293b;
+    color: #fff;
+}
+
+.nav-btn:hover {
+    transform: scale(1.07);
+}
+
+/* Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+}
+
+/* Cards */
+.card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+/* Badge */
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    background: #4f46e5;
+    color: #fff;
+    padding: 5px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 10;
+    border-radius: 0 6px 6px 0;
+}
+
+/* Heart */
+.wishlist-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: #cbd5e0;
+    transition: 0.2s;
+}
+
+.wishlist-btn:hover {
+    color: #ef4444;
+}
+
+/* Image */
+.card-image-wrapper {
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.card-image {
+    max-width: 100%;
+    max-height: 100%;
+    transition: 0.3s ease;
+}
+
+.card:hover .card-image {
+    transform: scale(1.08);
+}
+
+/* Content */
+.card-category {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.card-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+/* Actions */
+.card-actions {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.counter {
+    display: flex;
+}
+
+.counter-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.counter-btn:hover {
+    background: #f1f5f9;
+}
+
+.counter-btn:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+.counter-btn:last-child {
+    border-radius: 0 6px 6px 0;
+}
+
+.counter-input {
+    width: 36px;
+    text-align: center;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    border-left: none;
+    border-right: none;
+    background: #fff;
+    font-size: 14px;
+}
+
+/* Cart Button */
+.add-to-cart-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background: #43a047;
+    transform: translateY(-2px);
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #cbd5e0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #4f46e5;
+    transform: scale(1.2);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .container {
+        padding: 15px;
+    }
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
