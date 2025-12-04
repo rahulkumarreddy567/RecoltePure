@@ -34,7 +34,10 @@
       </ul>
       <div class="nav-actions">
         <i class='bx  bx-search'></i> 
+
+        <a href="cart.html" >
         <i class='bx  bxs-cart'  style='color: black'  ></i> 
+        </a>
         <a href="login.html" >
         <button class="sign-in">Sign in</button>
         </a>
@@ -156,10 +159,8 @@
 
 <!-- /*---------------------------------- Best Selling Products Section ----------------------------------*/ -->
 
-    <br><br>
 
 <div class="container">
-        <!-- Header -->
         <div class="section-header">
             <h2 class="section-title">Best Selling Products</h2>
             <div class="nav-buttons">
@@ -168,21 +169,19 @@
             </div>
         </div>
 
-        <!-- Grid -->
+        
         <div class="carousel-wrapper">
-
-            <!-- Card 1 -->
             <div class="card">
                 <div class="badge">-25%</div>
                 <button class="wishlist-btn active"><i class="fas fa-heart"></i></button>
                 
                 <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=500&q=80" alt="Vegetables" class="card-image">
+                    <img src="assets/images/tomatoes.png" alt="Vegetables" class="card-image">
                 </div>
                 
                 <div class="card-content">
                     <p class="card-category">Vegetables</p>
-                    <h3 class="card-title">Farm fresh organic fruites 250g</h3>
+                    <h3 class="card-title">Farm fresh organic Tomates 250g</h3>
                     <div class="card-price">$7.99 <span class="card-unit">/kg</span></div>
                 </div>
 
@@ -198,18 +197,17 @@
                 </div>
             </div>
 
-            <!-- Card 2 -->
             <div class="card">
                 <div class="badge">-25%</div>
                 <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                 
                 <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=500&q=80" alt="Meat" class="card-image">
+                    <img src="assets/images/banana.png" alt="Bananas" class="card-image">
                 </div>
                 
                 <div class="card-content">
-                    <p class="card-category">Meat</p>
-                    <h3 class="card-title">Farm fresh organic meat 1 kg</h3>
+                    <p class="card-category">Bananas</p>
+                    <h3 class="card-title">Farm fresh organic Bananas 1 kg</h3>
                     <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
                 </div>
 
@@ -225,18 +223,17 @@
                 </div>
             </div>
 
-            <!-- Card 3 -->
             <div class="card">
                 <div class="badge">-25%</div>
                 <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                 
                 <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=500&q=80" alt="Honey" class="card-image">
+                    <img src="assets/images/honey.png" alt="Honey" class="card-image">
                 </div>
                 
                 <div class="card-content">
                     <p class="card-category">Honey</p>
-                    <h3 class="card-title">Farm fresh organic hone 500g</h3>
+                    <h3 class="card-title">Farm fresh organic honey 500g</h3>
                     <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
                 </div>
 
@@ -252,13 +249,13 @@
                 </div>
             </div>
 
-            <!-- Card 4 -->
+          
             <div class="card">
                 <div class="badge">-25%</div>
                 <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                 
                 <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1582979512210-99b6a53385f9?auto=format&fit=crop&w=500&q=80" alt="Oranges" class="card-image">
+                    <img src="assets/images/orange.png" alt="Oranges" class="card-image">
                 </div>
                 
                 <div class="card-content">
@@ -281,7 +278,6 @@
 
         </div>
 
-        <!-- Pagination -->
         <div class="pagination">
             <div class="dot active"></div>
             <div class="dot"></div>
@@ -294,10 +290,8 @@
 
 <!-- /*---------------------------------- Footer Section ----------------------------------*/ --> 
 <div class="footer-wrapper">
-        <!-- Decorative Elements mimicking the image -->
         <i class="fa-solid fa-leaf leaf-decoration leaf-top-right"></i>
         <i class="fa-solid fa-leaf leaf-decoration leaf-bottom-left"></i>
-        <!-- Small falling bits -->
         <i class="fa-solid fa-leaf leaf-decoration leaf-falling-1"></i>
         <i class="fa-solid fa-leaf leaf-decoration leaf-falling-2"></i>
         <i class="fa-solid fa-pepper-hot leaf-decoration leaf-falling-3"></i>

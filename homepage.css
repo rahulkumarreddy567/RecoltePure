@@ -228,7 +228,7 @@ body {
 
   /* SPIKES */
   --spikes: 24;       /* number of spikes */
-  --size: 12px;       /* spike depth */
+  --size: 12px;     
 
   clip-path: polygon(
     /* auto-generated spikes */
@@ -689,6 +689,7 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         .fa-cc-amex { color: #006fcf; }
         .fa-bitcoin { color: #f7931a; }
       
+
 /* Container */
 .container {
     max-width: 1200px;
@@ -699,7 +700,7 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     color: #1e293b;
 }
 
-/* Header */
+/* Section Header */
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -740,15 +741,21 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     transform: scale(1.07);
 }
 
-/* Grid */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 26px;
+/* Carousel Wrapper */
+.carousel-wrapper {
+    display: flex;            
+    gap: 20px;            
+    overflow-x: auto;        
+    padding-bottom: 10px;     
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 /* Cards */
 .card {
+    flex: 0 0 250px;        
     background: #fff;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
@@ -769,7 +776,7 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     position: absolute;
     top: 15px;
     left: 0;
-    background: #4f46e5;
+    background: #1f6613;
     color: #fff;
     padding: 5px 14px;
     font-size: 0.8rem;
@@ -778,7 +785,7 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     border-radius: 0 6px 6px 0;
 }
 
-/* Heart */
+/* Heart / Wishlist */
 .wishlist-btn {
     position: absolute;
     top: 15px;
@@ -832,7 +839,7 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 .card-price {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #4f46e5;
+    color: #1f6613;
 }
 
 /* Actions */
@@ -884,7 +891,7 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: #4caf50;
+    background: #1f6613;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -916,7 +923,7 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .dot.active {
-    background: #4f46e5;
+    background: #1f6613;
     transform: scale(1.2);
 }
 
@@ -929,5 +936,11 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+    }
+    .carousel-wrapper {
+        gap: 15px;
+    }
+    .card {
+        flex: 0 0 200px;
     }
 }
