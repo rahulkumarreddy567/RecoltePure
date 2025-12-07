@@ -18,31 +18,26 @@ body {
   overflow:visible;
 
 }
-
 .navbar {
-  position: fixed;      
-  top: 0;                
-  left: 0;
-  width: 100%;
-  z-index: 100;      
-  display: flex;
-  justify-content: space-between;
-  align-items: center; 
-  padding: 15px 8%;
-  background-color: #FEF1E1; 
-  border-radius: 25px;
-  transition: all 0.3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 4%;
+    background-color: #FEF1E1; 
+    border-radius: 25px;
+    transition: all 0.3s ease; 
 }
 
-/* Divider line
-.navbar.scrolled::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: #ffffff; /* or any color you like */
-  /* margin-top: 5px; */
-/* } */ 
+
+.navbar.scrolled {
+    background-color: #FFF6ED; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); 
+}
 
 
 .logo {

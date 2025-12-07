@@ -29,7 +29,7 @@ session_start();
     </div>
       <ul class="nav-links">
         <li><a href="#" class="active">Home</a></li>
-        <li><a href="#products" class="active">Product</a></li>
+        <li><a href="categories.php" class="active">Product</a></li>
         <li><a href="#categories" class="active">Categories</a></li>
         <li><a href="#" class="active">Sesaonal Products</a></li>
         <li><a href="#" class="active">Our Producers</a></li>
@@ -41,26 +41,18 @@ session_start();
     <a href="cart.html"><i class='bx bxs-cart' style="color: black"></i></a>
 
     <?php if (!isset($_SESSION['login_user'])): ?>
-
-        <!-- USER IS NOT LOGGED IN -->
         <a href="login.php" class="sign-in">Sign Up</a>
-
     <?php else: ?>
-
-        <!-- USER IS LOGGED IN -->
         <?php 
             $email = $_SESSION['login_user'];
             $initial = strtoupper(substr($email, 0, 1));
         ?>
-
         <button class="user-btn"><?php echo $initial; ?></button>
-
         <div class="dropdown-menu">
             <a href="profile.php">My Profile</a>
             <a href="orders.php">My Orders</a>
             <a href="logout.php">Logout</a>
         </div>
-
     <?php endif; ?>
 
 </div>
@@ -332,10 +324,6 @@ session_start();
                         <span></span>
                     </div>
                 </div>
-                <!-- <address><br>
-                    123 Rue La Fayette, 75010 <br>
-                    Paris, France <br>
-                </address> -->
                 <br>
                 <div class="social-icons">
                     <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
@@ -422,13 +410,22 @@ document.addEventListener("DOMContentLoaded", function () {
             menu.style.display = (menu.style.display === "block") ? "none" : "block";
         });
     }
-
-    // Close dropdown when clicking outside
     document.addEventListener("click", function(e) {
         if (!btn.contains(e.target) && !menu.contains(e.target)) {
             menu.style.display = "none";
         }
     });
+});
+
+
+
+window.addEventListener("scroll", function() {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 100) { 
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
 });
 </script>
 
