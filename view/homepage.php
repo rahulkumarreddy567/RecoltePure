@@ -31,7 +31,6 @@ session_start();
         <li><a href="#" class="active">Home</a></li>
         <li><a href="categories.php" class="active">Product</a></li>
         <li><a href="#categories" class="active">Categories</a></li>
-        <li><a href="#" class="active">Sesaonal Products</a></li>
         <li><a href="#" class="active">Our Producers</a></li>
         <li><a href="#" class="active">Contact US</a></li>
       </ul>
@@ -164,18 +163,27 @@ session_start();
                 </div>
             </div>
             <div class="fm-right">
-                <div class="fm-cat">
+                <a href="categories.php">
+                    <div class="fm-cat">
                     <div class="fm-icon">🍎</div>
                     <div><h3 class="fm-cat-title">Fresh Fruits</h3><p class="fm-cat-desc">We provide fresh seasonal fruits directly from local farms</p></div>
                 </div>
+                </a>
+                
+                <a href="categories.php">
                 <div class="fm-cat">
                     <div class="fm-icon">🥕</div>
                     <div><h3 class="fm-cat-title">Fresh Vegetables</h3><p class="fm-cat-desc">We provide organic vegetables harvested daily for you</p></div>
                 </div>
+                </a>
+
+                <a href="categories.php">
                 <div class="fm-cat">
                     <div class="fm-icon">🥛</div>
                     <div><h3 class="fm-cat-title">Dairy Products</h3><p class="fm-cat-desc">We provide fresh dairy products from trusted local farms</p></div>
                 </div>
+                </a>
+
             </div>
         </div>
     </div>
