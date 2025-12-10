@@ -76,7 +76,7 @@ $products = mysqli_query($db, $final_sql);
                     <a href="categories.php?category_id=<?php echo $cat['category_id']; ?>">
                         <div class="category-item">
                             <div class="cat-img-wrapper">
-                                 <img src="assets/images/<?php echo $cat['image']; ?>" alt="<?php echo $cat['category_name']; ?>">
+                                 <img src="../assets/uploads/products/<?php echo $cat['image']; ?>" alt="<?php echo $cat['category_name']; ?>">
                             </div>
                              <h4><?php echo ucfirst($cat['category_name']); ?></h4>
                         </div>
@@ -112,7 +112,7 @@ $products = mysqli_query($db, $final_sql);
             <?php while($prod = mysqli_fetch_assoc($products)) : ?>
                 <div class="product-card">
                     <span class="badge"><?php echo $prod['stock_quantity']; ?></span>
-                    <img src="assets/images/<?php echo $prod['image']; ?>" alt="<?php echo $prod['product_name']; ?>" class="product-img">
+                    <img src="../assets/uploads/products/<?php echo $prod['image']; ?>" alt="<?php echo $prod['product_name']; ?>" class="product-img">
                     <div class="product-cat">
                         <?php 
                         $cat_name = mysqli_fetch_assoc(mysqli_query($db, "SELECT category_name FROM categories WHERE category_id=".$prod['category_id']));

@@ -56,20 +56,19 @@ session_start();
     <?php endif; ?>
 
 </div>
+</nav>
+  </header>
 
 
-
-    </nav>
-
-    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'farmer'): ?>
+  <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'farmer'): ?>
     <div class="farmer-actions">
         <form action="upload_products.php" method="GET">
-            <button type="submit" class="btn-upload">Upload Products</button>
+            <button type="submit" class="btn-upload">
+                Upload Products
+            </button>
         </form>
     </div>
 <?php endif; ?>
-
-  </header>
 
   <section class="hero">
     <div class="hero-content">
