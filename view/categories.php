@@ -14,7 +14,7 @@ if(!empty($search)) {
     $sql .= " AND (name LIKE '%$search_safe%' OR description LIKE '%$search_safe%')";
 }
 
-$sql .= " ORDER BY id DESC";
+$sql .= " ORDER BY product_id DESC";
 $result = mysqli_query($db, $sql);
 
 

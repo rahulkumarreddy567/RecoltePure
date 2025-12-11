@@ -30,7 +30,7 @@ session_start();
       <ul class="nav-links">
         <li><a href="#" class="active">Home</a></li>
         <li><a href="categories.php" class="active">Product</a></li>
-        <li><a href="#categories" class="active">Categories</a></li>
+        <li><a href="categories.php" class="active">Categories</a></li>
         <li><a href="#" class="active">Our Producers</a></li>
         <li><a href="contact.php" class="active">Contact Us</a></li>
       </ul>
