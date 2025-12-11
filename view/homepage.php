@@ -23,21 +23,29 @@ session_start();
     <nav class="navbar">
       <div class="logo">
         <a href="homepage.php" class="logo">
-        <img src="../assets/images/Logo.png" alt="RecoltePure Logo" sizes="16x16"/>
+        <img src="../assets/uploads/products/Logo.png" alt="RecoltePure Logo" sizes="16x16"/>
         RecoltePure
         </a>
     </div>
       <ul class="nav-links">
         <li><a href="#" class="active">Home</a></li>
         <li><a href="categories.php" class="active">Product</a></li>
-        <li><a href="#categories" class="active">Categories</a></li>
+        <li><a href="categories.php" class="active">Categories</a></li>
         <li><a href="#" class="active">Our Producers</a></li>
         <li><a href="contact.php" class="active">Contact Us</a></li>
         <li><a href="terms_and_conditions.php" class="active">Terms & Conditions</a></li>
       </ul>
       <div class="nav-actions">
 
-    <i class='bx bx-search'></i>
+
+    
+    <form method="GET" action="view/categories.php" >
+    <input type="text" name="search" placeholder="Search products..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+    <button type="submit">
+        <i class='bx bx-search'></i>
+    </button>
+    </form>
+
     <a href="cart.php"><i class='bx bxs-cart' style="color: black"></i></a>
 
     <?php if (!isset($_SESSION['login_user'])): ?>
@@ -80,7 +88,7 @@ session_start();
     </div>
 
     <div class="hero-image">
-      <img src="../assets/images/homepage.png" alt="Food Bowl">
+      <img src="../assets/uploads/products/homepage.png" alt="Food Bowl">
       <!-- <div class="info-card">
         <div>
           <h4> <i class='bx  bxs-truck'  style='color: black'  ></i> Fast Delivery</h4>
@@ -102,31 +110,31 @@ session_start();
       <button class="homepage-nav-btn" id="homepage-prev">❮</button>
       <div class="homepage-cards">
         <div class="homepage-card homepage-pink">
-          <img src="../assets/images/fruits.png" alt="fruits">
+          <img src="../assets/uploads/products/fruits.png" alt="fruits">
           <h3>Fruits</h3>
           <button class="homepage-order-btn">Order Now</button>
         </div>
 
         <div class="homepage-card homepage-orange">
-          <img src="../assets/images/vegetables.png" alt="vegetables">
+          <img src="../assets/uploads/products/vegetables.png" alt="vegetables">
           <h3>Vegetables</h3>
           <button class="homepage-order-btn">Order Now</button>
         </div>
 
         <div class="homepage-card homepage-green">
-          <img src="../assets/images/dairyproducts.png" alt="dairyproducts">
+          <img src="../assets/uploads/products/dairyproducts.png" alt="dairyproducts">
           <h3>Dairy Products</h3>
           <button class="homepage-order-btn">Order Now</button>
         </div>
 
         <div class="homepage-card homepage-blue">
-          <img src="../assets/images/grains_and_pulses.png" alt="grains_and_pulses">
+          <img src="../assets/uploads/products/grains_and_pulses.png" alt="grains_and_pulses">
           <h3>Grains and Pulses</h3>
           <button class="homepage-order-btn">Order Now</button>
         </div>
 
         <div class="homepage-card homepage-red">
-          <img src="../assets/images/herbss.webp" alt="herbs">
+          <img src="../assets/uploads/products/herbss.webp" alt="herbs">
           <h3>Herbs</h3>
           <button class="homepage-order-btn">Order Now</button>
         </div>
@@ -190,137 +198,354 @@ session_start();
     </div>
 
 <!-- /*---------------------------------- Promotions Section End----------------------------------*/ -->
-
 <!-- /*---------------------------------- Best Selling Products Section ----------------------------------*/ -->
 
-
 <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Best Selling Products</h2>
-            <div class="nav-buttons">
-                <button class="nav-btn"><i class="fas fa-arrow-left"></i></button>
-                <button class="nav-btn active"><i class="fas fa-arrow-right"></i></button>
-            </div>
-        </div>
-
-        
-        <div class="carousel-wrapper">
-            <div class="card">
-                <div class="badge">-25%</div>
-                <button class="wishlist-btn active"><i class="fas fa-heart"></i></button>
-                
-                <div class="card-image-wrapper">
-                    <img src="../assets/images/tomatoes.png" alt="Vegetables" class="card-image">
-                </div>
-                
-                <div class="card-content">
-                    <p class="card-category">Vegetables</p>
-                    <h3 class="card-title">Farm fresh organic Tomates 250g</h3>
-                    <div class="card-price">$7.99 <span class="card-unit">/kg</span></div>
-                </div>
-
-                <div class="card-actions">
-                    <div class="counter">
-                        <button class="counter-btn">-</button>
-                        <input type="text" class="counter-input" value="1" readonly>
-                        <button class="counter-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">
-                        <i class="fas fa-shopping-bag"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="badge">-25%</div>
-                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                
-                <div class="card-image-wrapper">
-                    <img src="../assets/images/banana.png" alt="Bananas" class="card-image">
-                </div>
-                
-                <div class="card-content">
-                    <p class="card-category">Bananas</p>
-                    <h3 class="card-title">Farm fresh organic Bananas 1 kg</h3>
-                    <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
-                </div>
-
-                <div class="card-actions">
-                    <div class="counter">
-                        <button class="counter-btn">-</button>
-                        <input type="text" class="counter-input" value="1" readonly>
-                        <button class="counter-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">
-                        <i class="fas fa-shopping-bag"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="badge">-25%</div>
-                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                
-                <div class="card-image-wrapper">
-                    <img src="../assets/images/honey.png" alt="Honey" class="card-image">
-                </div>
-                
-                <div class="card-content">
-                    <p class="card-category">Honey</p>
-                    <h3 class="card-title">Farm fresh organic honey 500g</h3>
-                    <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
-                </div>
-
-                <div class="card-actions">
-                    <div class="counter">
-                        <button class="counter-btn">-</button>
-                        <input type="text" class="counter-input" value="1" readonly>
-                        <button class="counter-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">
-                        <i class="fas fa-shopping-bag"></i>
-                    </button>
-                </div>
-            </div>
-
-          
-            <div class="card">
-                <div class="badge">-25%</div>
-                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                
-                <div class="card-image-wrapper">
-                    <img src="../assets/images/orange.png" alt="Oranges" class="card-image">
-                </div>
-                
-                <div class="card-content">
-                    <p class="card-category">Fruits</p>
-                    <h3 class="card-title">Full Fresh organic orange 500g</h3>
-                    <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
-                </div>
-
-                <div class="card-actions">
-                    <div class="counter">
-                        <button class="counter-btn">-</button>
-                        <input type="text" class="counter-input" value="1" readonly>
-                        <button class="counter-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">
-                        <i class="fas fa-shopping-bag"></i>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="pagination">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+    <div class="section-header">
+        <h2 class="section-title">Best Selling Products</h2>
+        <div class="nav-buttons">
+            <button class="nav-btn"><i class="fas fa-arrow-left"></i></button>
+            <button class="nav-btn active"><i class="fas fa-arrow-right"></i></button>
         </div>
     </div>
 
+    <div class="carousel-wrapper">
+
+        <!-- PRODUCT 1 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn active"><i class="fas fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/tomatoes.png" alt="Vegetables" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Vegetables</p>
+                <h3 class="card-title">Farm fresh organic Tomates 250g</h3>
+                <div class="card-price">$7.99 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <!-- Hidden values -->
+            <input type="hidden" name="product_id" value="1">
+            <input type="hidden" name="product_name" value="Farm fresh organic Tomates 250g">
+            <input type="hidden" name="price" value="7.99">
+            <input type="hidden" name="image" value="../assets/images/tomatoes.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+
+        <!-- PRODUCT 2 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn"><i class="far fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/banana.png" alt="Bananas" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Bananas</p>
+                <h3 class="card-title">Farm fresh organic Bananas 1 kg</h3>
+                <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <input type="hidden" name="product_id" value="2">
+            <input type="hidden" name="product_name" value="Farm fresh organic Bananas 1 kg">
+            <input type="hidden" name="price" value="11.00">
+            <input type="hidden" name="image" value="../assets/images/banana.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+
+        <!-- PRODUCT 3 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn"><i class="far fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/honey.png" alt="Honey" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Honey</p>
+                <h3 class="card-title">Farm fresh organic honey 500g</h3>
+                <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <input type="hidden" name="product_id" value="3">
+            <input type="hidden" name="product_name" value="Farm fresh organic honey 500g">
+            <input type="hidden" name="price" value="11.00">
+            <input type="hidden" name="image" value="../assets/images/honey.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+
+        <!-- PRODUCT 4 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn"><i class="far fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/orange.png" alt="Oranges" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Fruits</p>
+                <h3 class="card-title">Full Fresh organic orange 500g</h3>
+                <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <input type="hidden" name="product_id" value="4">
+            <input type="hidden" name="product_name" value="Fresh organic orange 500g">
+            <input type="hidden" name="price" value="11.00">
+            <input type="hidden" name="image" value="../assets/images/orange.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+
+        <!-- PRODUCT 5 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn"><i class="far fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/orange.png" alt="Oranges" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Fruits</p>
+                <h3 class="card-title">Full Fresh organic orange 500g</h3>
+                <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <input type="hidden" name="product_id" value="4">
+            <input type="hidden" name="product_name" value="Fresh organic orange 500g">
+            <input type="hidden" name="price" value="11.00">
+            <input type="hidden" name="image" value="../assets/images/orange.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+
+        <!-- PRODUCT 6 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn"><i class="far fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/orange.png" alt="Oranges" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Fruits</p>
+                <h3 class="card-title">Full Fresh organic orange 500g</h3>
+                <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <input type="hidden" name="product_id" value="4">
+            <input type="hidden" name="product_name" value="Fresh organic orange 500g">
+            <input type="hidden" name="price" value="11.00">
+            <input type="hidden" name="image" value="../assets/images/orange.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+        <!-- PRODUCT 7 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn"><i class="far fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/orange.png" alt="Oranges" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Fruits</p>
+                <h3 class="card-title">Full Fresh organic orange 500g</h3>
+                <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <input type="hidden" name="product_id" value="4">
+            <input type="hidden" name="product_name" value="Fresh organic orange 500g">
+            <input type="hidden" name="price" value="11.00">
+            <input type="hidden" name="image" value="../assets/images/orange.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+
+        <!-- PRODUCT 8 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn"><i class="far fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/orange.png" alt="Oranges" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Fruits</p>
+                <h3 class="card-title">Full Fresh organic orange 500g</h3>
+                <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <input type="hidden" name="product_id" value="4">
+            <input type="hidden" name="product_name" value="Fresh organic orange 500g">
+            <input type="hidden" name="price" value="11.00">
+            <input type="hidden" name="image" value="../assets/images/orange.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+        <!-- PRODUCT 9 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn"><i class="far fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/orange.png" alt="Oranges" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Fruits</p>
+                <h3 class="card-title">Full Fresh organic orange 500g</h3>
+                <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <input type="hidden" name="product_id" value="4">
+            <input type="hidden" name="product_name" value="Fresh organic orange 500g">
+            <input type="hidden" name="price" value="11.00">
+            <input type="hidden" name="image" value="../assets/images/orange.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+        <!-- PRODUCT 10 -->
+        <form action="cart.php" method="POST" class="card">
+            <div class="badge">-25%</div>
+            <button type="button" class="wishlist-btn"><i class="far fa-heart"></i></button>
+
+            <div class="card-image-wrapper">
+                <img src="../assets/uploads/products/orange.png" alt="Oranges" class="card-image">
+            </div>
+
+            <div class="card-content">
+                <p class="card-category">Fruits</p>
+                <h3 class="card-title">Full Fresh organic orange 500g</h3>
+                <div class="card-price">$11.00 <span class="card-unit">/kg</span></div>
+            </div>
+
+            <input type="hidden" name="product_id" value="4">
+            <input type="hidden" name="product_name" value="Fresh organic orange 500g">
+            <input type="hidden" name="price" value="11.00">
+            <input type="hidden" name="image" value="../assets/images/orange.png">
+            <input type="hidden" name="quantity" class="quantity-field" value="1">
+
+            <div class="card-actions">
+                <div class="counter">
+                    <button type="button" class="counter-btn minus">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button type="button" class="counter-btn plus">+</button>
+                </div>
+                <button type="submit" class="add-to-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                </button>
+            </div>
+        </form>
+
+    </div>
+
+    
+</div>
+
 <!-- /*---------------------------------- Best Selling Products Section Ends----------------------------------*/ -->
+
 
 <!-- /*---------------------------------- Footer Section ----------------------------------*/ --> 
 <div class="footer-wrapper">
@@ -335,7 +560,7 @@ session_start();
             <!-- Brand -->
             <div class="brand-col">
                 <div class="logo">
-                    <img src="../assets/images/Logo.png" alt="RecoltePure Logo" sizes="4x4"/>
+                    <img src="../assets/uploads/products/Logo.png" alt="RecoltePure Logo" sizes="4x4"/>
                     <div class="logo-text">
                         <span>RecoltePure</span>
                         <span></span>
@@ -444,6 +669,46 @@ window.addEventListener("scroll", function() {
         navbar.classList.remove("scrolled");
     }
 });
+
+
+document.querySelectorAll(".card").forEach(card => {
+    const minusBtn = card.querySelector(".minus");
+    const plusBtn  = card.querySelector(".plus");
+    const counterInput = card.querySelector(".counter-input");
+    const quantityField = card.querySelector(".quantity-field");
+
+    plusBtn.addEventListener("click", () => {
+        let value = parseInt(counterInput.value);
+        value++;
+        counterInput.value = value;
+        quantityField.value = value;
+    });
+
+    minusBtn.addEventListener("click", () => {
+        let value = parseInt(counterInput.value);
+        if (value > 1) {
+            value--;
+            counterInput.value = value;
+            quantityField.value = value;
+        }
+    });
+});
+
+
+const wrapper = document.querySelector(".carousel-wrapper");
+const prevBtn = document.querySelectorAll(".nav-btn")[0];
+const nextBtn = document.querySelectorAll(".nav-btn")[1];
+
+const scrollAmount = 270; 
+nextBtn.addEventListener("click", () => {
+    wrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+});
+
+
+prevBtn.addEventListener("click", () => {
+    wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+});
+
 </script>
 
 
