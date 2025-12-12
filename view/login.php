@@ -1,41 +1,44 @@
 <?php
-ob_start(); 
+ob_start();
 session_start();
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 include("../db_connection.php");
 
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (!$db) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
     $username = mysqli_real_escape_string($db, $_POST['username']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
-    $sql_farmers = "SELECT * FROM farmer WHERE email='$username' AND password='$password'";
-    $result_farmers = mysqli_query($db, $sql_farmers);
+    $password = $_POST['password'];
 
-    if ($result_farmers && mysqli_num_rows($result_farmers) == 1) {
-        $_SESSION['login_user'] = $username;
-        $_SESSION['role'] = "farmer";
-        header("Location: homepage.php");
-        exit();
+    // FARMER LOGIN
+    $sql_farmer = "SELECT * FROM farmer WHERE email='$username' LIMIT 1";
+    $result_farmer = mysqli_query($db, $sql_farmer);
+
+    if ($result_farmer && mysqli_num_rows($result_farmer) == 1) {
+        $farmer = mysqli_fetch_assoc($result_farmer);
+        // Verify farmer password against password column
+        if (isset($farmer['password']) && password_verify($password, $farmer['password'])) {
+            $_SESSION['login_user'] = $farmer['email'];
+            $_SESSION['role'] = "farmer";
+            $_SESSION['user_name'] = $farmer['name'];
+            header("Location: homepage.php");
+            exit();
+        }
     }
 
-    $sql_users = "SELECT * FROM users WHERE email='$username' AND password='$password'";
-    $result_users = mysqli_query($db, $sql_users);
+    // CUSTOMER LOGIN
+    $sql_user = "SELECT * FROM users WHERE email='$username' LIMIT 1";
+    $result_user = mysqli_query($db, $sql_user);
 
-    if ($result_users && mysqli_num_rows($result_users) == 1) {
-        $_SESSION['login_user'] = $username;
-        $_SESSION['role'] = "customer";
-        header("Location: homepage.php");
-        exit();
+    if ($result_user && mysqli_num_rows($result_user) == 1) {
+        $user = mysqli_fetch_assoc($result_user);
+        if (isset($user['password']) && password_verify($password, $user['password'])) {
+            $_SESSION['login_user'] = $user['email'];
+            $_SESSION['role'] = "customer";
+            $_SESSION['user_name'] = $user['name'];
+            header("Location: homepage.php");
+            exit();
+        }
     }
 
     $error = "Invalid Username or Password!";
@@ -60,6 +63,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-bottom: 15px;
             text-align: center;
             font-size: 14px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .social-link:hover {
+            transform: scale(1.2);
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -104,28 +119,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <a href="#" class="forgot-link">Forgot password?</a>
 
-                    <div class="divider">
-                        <span>or</span>
-                    </div>
-
-                    <button type="button" class="btn btn-google">
-                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo" width="20" height="20">
-                        Login with Google
-                    </button>
-
                     <button type="submit" class="btn btn-primary">Login</button>
 
                     <p class="signup-text">
-                        Don't have an account? <a href="#">Sign up</a>
+                        Don't have an account? <a href="registration.php">Sign up</a>
                     </p>
                 </form>
             </div>
 
             <div class="social-footer">
-                <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/124/124010.png" width="20" height="20" alt="Facebook">
-                <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/733/733579.png" width="20" height="20" alt="Twitter">
-                <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20" height="20" alt="LinkedIn">
-                <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="20" height="20" alt="Instagram">
+                <a href="https://www.facebook.com/RecoltePure" target="_blank" class="social-link">
+                    <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/124/124010.png" width="20" height="20" alt="Facebook">
+                </a>
+                <a href="https://www.twitter.com/RecoltePure" target="_blank" class="social-link">
+                    <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/733/733579.png" width="20" height="20" alt="Twitter">
+                </a>
+                <a href="https://www.linkedin.com/company/RecoltePure" target="_blank" class="social-link">
+                    <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="20" height="20" alt="LinkedIn">
+                </a>
+                <a href="https://www.instagram.com/RecoltePure" target="_blank" class="social-link">
+                    <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="20" height="20" alt="Instagram">
+                </a>
             </div>
         </div>
     </div>

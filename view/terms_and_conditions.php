@@ -7,7 +7,7 @@ session_start();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms and Conditions - RecoltePure</title>
-  <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/uploads/products/favicon.png">
   <link rel="stylesheet" href="../assets/css/homepage.css" />
   <link rel="stylesheet" href="../assets/css/terms.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@ session_start();
     <nav class="navbar">
       <div class="logo">
         <a href="homepage.php" class="logo">
-          <img src="../assets/images/Logo.png" alt="RecoltePure Logo" sizes="16x16"/>
+          <img src="../assets/uploads/products/Logo.png" alt="RecoltePure Logo" sizes="16x16"/>
           RecoltePure
         </a>
       </div>

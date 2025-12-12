@@ -1,3 +1,49 @@
+<?php
+session_start();
+include("../db_connection.php");
+
+$error = "";
+$success = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $firstName = mysqli_real_escape_string($db, $_POST['firstName']);
+    $surname = mysqli_real_escape_string($db, $_POST['surname']);
+    $email = mysqli_real_escape_string($db, $_POST['email']);
+    $phone = mysqli_real_escape_string($db, $_POST['phone']);
+    $address = mysqli_real_escape_string($db, $_POST['address']);
+    $certNumber = mysqli_real_escape_string($db, $_POST['certNumber']);
+    $verificationDate = mysqli_real_escape_string($db, $_POST['verificationDate']);
+    $registrationDate = mysqli_real_escape_string($db, $_POST['registrationDate']);
+    $password = $_POST['password'];
+    $terms = isset($_POST['terms']) ? 1 : 0;
+
+    if (!$terms) {
+        $error = "You must accept terms and privacy policy.";
+    } else {
+        // Check if email exists
+        $check_email = mysqli_query($db, "SELECT * FROM farmer WHERE email='$email'");
+        if (mysqli_num_rows($check_email) > 0) {
+            $error = "Email already registered!";
+        } else {
+            // Hash password
+            $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+            $fullName = $firstName . " " . $surname;
+
+            // Insert into farmer table with password hash
+            $stmt = $db->prepare("INSERT INTO farmer (name, email, phone_number, address, certificate_number, verification_date, registration_date, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssssss", $fullName, $email, $phone, $address, $certNumber, $verificationDate, $registrationDate, $password_hash);
+
+            if ($stmt->execute()) {
+                $success = "registered";
+            } else {
+                $error = "Error: " . $db->error;
+            }
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -329,6 +375,45 @@
             text-decoration: underline;
         }
 
+        .footer {
+            background: rgba(45, 80, 22, 0.9);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-content p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .footer-login-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-login-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 1024px) {
             .container {
                 flex-direction: column;
@@ -355,7 +440,7 @@
     <div class="header">
         <div class="logo">
             <div class="logo-circle">
-                <img src="assets/images/logo.png" alt="Logo Icon" class="logo-icon">
+                <img src="../assets/uploads/products/logo.png" alt="Logo Icon" class="logo-icon">
             </div>
             <span class="logo-name">RecoltePure</span>
         </div>
@@ -389,7 +474,7 @@
         <div class="right-section">
             <div class="form-container">
                 <h2>Create account</h2>
-                <form>
+                <form method="POST" action="registration.php">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First name</label>
@@ -449,26 +534,21 @@
 
                     <button type="submit" class="submit-btn">Sign Up</button>
 
-                    <div class="divider">Express registration</div>
-
-                    <div class="social-buttons">
-                        <button type="button" class="social-btn facebook-btn">
-                            <span>f</span>
-                            <span>Continue with Facebook</span>
-                        </button>
-                        <button type="button" class="social-btn">
-                            <span>G</span>
-                            <span>Se connecter avec Google</span>
-                        </button>
-                    </div>
-
                     <div class="login-link">
-                        Already have an account? <a href="#">Log In</a>
+                        Already have an account? <a href="login.php">Log In</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 RecoltePure. All rights reserved.</p>
+            <a href="login.php" class="footer-login-btn">Login</a>
+        </div>
+    </footer>
 
     <script>
         function togglePassword() {
@@ -485,6 +565,99 @@
 
         // Set today's date as default for registration date
         document.getElementById('registrationDate').valueAsDate = new Date();
+
+        // Show success modal if registration was successful
+        <?php if ($success === "registered") { ?>
+        window.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('successModal');
+            modal.style.display = 'flex';
+            
+            // Auto-redirect to login after 3 seconds
+            setTimeout(function() {
+                window.location.href = 'login.php';
+            }, 3000);
+        });
+        <?php } ?>
     </script>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal" style="display: none;">
+        <div class="success-modal-content">
+            <div class="success-icon">✓</div>
+            <h2>Registration Successful!</h2>
+            <p>Your account has been created. You will be redirected to login in a moment.</p>
+            <a href="login.php" class="btn btn-primary">Go to Login Now</a>
+        </div>
+    </div>
+
+    <style>
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .success-modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            font-size: 64px;
+            color: #4a7c2c;
+            margin-bottom: 20px;
+        }
+
+        .success-modal-content h2 {
+            font-size: 24px;
+            color: #2d5016;
+            margin-bottom: 15px;
+        }
+
+        .success-modal-content p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .success-modal-content .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .success-modal-content .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45, 80, 22, 0.3);
+        }
+    </style>
 </body>
 </html>
