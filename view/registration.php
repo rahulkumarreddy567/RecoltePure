@@ -1,43 +1,69 @@
 <?php
 session_start();
-include("../db_connection.php");
+require_once '../config/db_connection.php';
 
 $error = "";
 $success = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstName = mysqli_real_escape_string($db, $_POST['firstName']);
-    $surname = mysqli_real_escape_string($db, $_POST['surname']);
-    $email = mysqli_real_escape_string($db, $_POST['email']);
-    $phone = mysqli_real_escape_string($db, $_POST['phone']);
-    $address = mysqli_real_escape_string($db, $_POST['address']);
-    $certNumber = mysqli_real_escape_string($db, $_POST['certNumber']);
-    $verificationDate = mysqli_real_escape_string($db, $_POST['verificationDate']);
-    $registrationDate = mysqli_real_escape_string($db, $_POST['registrationDate']);
-    $password = $_POST['password'];
+    $role = isset($_POST['role']) ? $_POST['role'] : 'user';
+    $firstName = mysqli_real_escape_string($db, $_POST['firstName'] ?? '');
+    $surname = mysqli_real_escape_string($db, $_POST['surname'] ?? '');
+    $email = mysqli_real_escape_string($db, $_POST['email'] ?? '');
+    $phone = mysqli_real_escape_string($db, $_POST['phone'] ?? '');
+    $address = mysqli_real_escape_string($db, $_POST['address'] ?? '');
+    $certNumber = mysqli_real_escape_string($db, $_POST['certNumber'] ?? '');
+    $password = $_POST['password'] ?? '';
     $terms = isset($_POST['terms']) ? 1 : 0;
 
     if (!$terms) {
         $error = "You must accept terms and privacy policy.";
+    } elseif (empty($email) || empty($password)) {
+        $error = "Email and password are required.";
     } else {
-        // Check if email exists
-        $check_email = mysqli_query($db, "SELECT * FROM farmer WHERE email='$email'");
-        if (mysqli_num_rows($check_email) > 0) {
-            $error = "Email already registered!";
-        } else {
-            // Hash password
-            $password_hash = password_hash($password, PASSWORD_BCRYPT);
+        $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-            $fullName = $firstName . " " . $surname;
-
-            // Insert into farmer table with password hash
-            $stmt = $db->prepare("INSERT INTO farmer (name, email, phone_number, address, certificate_number, verification_date, registration_date, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssssss", $fullName, $email, $phone, $address, $certNumber, $verificationDate, $registrationDate, $password_hash);
-
-            if ($stmt->execute()) {
-                $success = "registered";
+        if ($role === 'farmer') {
+            $check_email = $db->prepare("SELECT farmer_id FROM farmer WHERE email = ?");
+            $check_email->bind_param("s", $email);
+            $check_email->execute();
+            $exists = $check_email->get_result()->num_rows > 0;
+            if ($exists) {
+                $error = "Email already registered as farmer.";
             } else {
-                $error = "Error: " . $db->error;
+                $fullName = trim($firstName . " " . $surname);
+                $stmt = $db->prepare("INSERT INTO farmer (name, email, phone_number, address, certificate_number, password_hash) VALUES (?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("ssssss", $fullName, $email, $phone, $address, $certNumber, $password_hash);
+                if ($stmt->execute()) {
+                    $success = "registered";
+                    $_SESSION['role'] = 'farmer';
+                    $_SESSION['login_user'] = $email;
+                    header('Location: ../index.php?page=upload_product');
+                    exit;
+                } else {
+                    $error = "Error: " . $db->error;
+                }
+            }
+        } else {
+            $check_email = $db->prepare("SELECT customer_id FROM users WHERE email = ?");
+            $check_email->bind_param("s", $email);
+            $check_email->execute();
+            $exists = $check_email->get_result()->num_rows > 0;
+            if ($exists) {
+                $error = "Email already registered as user.";
+            } else {
+                $fullName = trim($firstName . " " . $surname);
+                $stmt = $db->prepare("INSERT INTO users (name, email, address, password, registration_date) VALUES (?, ?, ?, ?, NOW())");
+                $stmt->bind_param("ssss", $fullName, $email, $address, $password_hash);
+                if ($stmt->execute()) {
+                    $success = "registered";
+                    $_SESSION['role'] = 'user';
+                    $_SESSION['login_user'] = $email;
+                    header('Location: ../index.php?page=home');
+                    exit;
+                } else {
+                    $error = "Error: " . $db->error;
+                }
             }
         }
     }
@@ -475,6 +501,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-container">
                 <h2>Create account</h2>
                 <form method="POST" action="registration.php">
+                    <div class="form-group">
+                        <label for="role">Register as</label>
+                        <select id="role" name="role" required>
+                            <option value="user">User</option>
+                            <option value="farmer">Farmer</option>
+                        </select>
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First name</label>
@@ -502,20 +535,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group">
-                            <label for="certNumber">Certification number</label>
-                            <input type="text" id="certNumber" name="certNumber" required>
+                        <div class="form-group" id="certNumberGroup">
+                            <label for="certNumber">Certification number (Farmers only)</label>
+                            <input type="text" id="certNumber" name="certNumber" placeholder="Enter certificate number (optional)">
                         </div>
-                        <div class="form-group">
-                            <label for="verificationDate">Verification date</label>
-                            <input type="date" id="verificationDate" name="verificationDate" required>
-                        </div>
+                        
                     </div>
 
-                    <div class="form-group">
-                        <label for="registrationDate">Registration date</label>
-                        <input type="date" id="registrationDate" name="registrationDate" required>
-                    </div>
+                    
 
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -563,8 +590,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        // Set today's date as default for registration date
-        document.getElementById('registrationDate').valueAsDate = new Date();
+        // Toggle certification number visibility based on role
+        document.addEventListener('DOMContentLoaded', function() {
+            const roleSelect = document.getElementById('role');
+            const certGroup = document.getElementById('certNumberGroup');
+            const certInput = document.getElementById('certNumber');
+
+            function updateCertVisibility() {
+                if (roleSelect && roleSelect.value === 'farmer') {
+                    certGroup.style.display = 'block';
+                } else {
+                    certGroup.style.display = 'none';
+                    certInput.value = '';
+                }
+            }
+
+            updateCertVisibility();
+            if (roleSelect) {
+                roleSelect.addEventListener('change', updateCertVisibility);
+            }
+        });
+        // Removed manual date fields; timestamps handled by DB
 
         // Show success modal if registration was successful
         <?php if ($success === "registered") { ?>

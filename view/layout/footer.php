@@ -72,6 +72,7 @@
         <a href="#">Privacy Policy</a>
         <a href="terms_and_conditions.php">Terms & Conditions</a>
         <a href="#">Cookies/Ad Choices</a>
+        <a href="index.php?page=admin&action=login">Login as Admin</a>
     </div>
 
     <div class="payment-icons">
