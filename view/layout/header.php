@@ -39,7 +39,7 @@
             </button>
         </form>
 
-        <a href="cart.php"><i class='bx bxs-cart' style="color: black"></i></a>
+        <a href="index.php?page=cart"><i class='bx bxs-cart' style="color: black"></i></a>
 
         <?php if (!$userData['is_logged_in']): ?>
            <a href="index.php?page=login" class="sign-in">Sign Up</a>
@@ -48,9 +48,12 @@
             <div class="dropdown-menu">
                 <a href="profile.php">My Profile</a>
                 <a href="orders.php">My Orders</a>
-                <a href="logout.php">Logout</a>
+                <a href="index.php?page=logout">Logout</a>
             </div>
         <?php endif; ?>
       </div>
     </nav>
   </header>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

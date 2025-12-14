@@ -38,28 +38,7 @@ window.addEventListener("scroll", function() {
 });
 
 
-document.querySelectorAll(".product-card").forEach(card => {
-    const minusBtn = card.querySelector(".minus");
-    const plusBtn  = card.querySelector(".plus");
-    const counterInput = card.querySelector(".counter-input");
-    const quantityField = card.querySelector(".quantity-field");
 
-    plusBtn.addEventListener("click", () => {
-        let value = parseInt(counterInput.value);
-        value++;
-        counterInput.value = value;
-        quantityField.value = value;
-    });
-
-    minusBtn.addEventListener("click", () => {
-        let value = parseInt(counterInput.value);
-        if (value > 1) {
-            value--;
-            counterInput.value = value;
-            quantityField.value = value;
-        }
-    });
-});
 
 
 const wrapper = document.querySelector(".carousel-wrapper");
@@ -113,3 +92,21 @@ document.addEventListener("DOMContentLoaded", function () {
     setActive(gridBtn);
 });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const userBtn = document.querySelector(".user-btn");
+    const dropdown = document.querySelector(".dropdown-menu");
+
+    if(userBtn && dropdown) {
+        userBtn.addEventListener("click", () => {
+            dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+        });
+
+        // Close dropdown if clicked outside
+        document.addEventListener("click", (e) => {
+            if (!userBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = "none";
+            }
+        });
+    }
+});

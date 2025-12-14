@@ -17,7 +17,6 @@ class AuthController {
             $farmerModel = new Farmer($GLOBALS['db']);
             $userModel   = new User($GLOBALS['db']);
 
-            // Try farmer login
             $farmer = $farmerModel->findByEmail($email);
             if ($farmer && password_verify($password, $farmer['password'])) {
                 $_SESSION['login_user'] = $farmer['email'];
@@ -27,7 +26,6 @@ class AuthController {
                 exit;
             }
 
-            // Try customer login
             $user = $userModel->findByEmail($email);
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['login_user'] = $user['email'];
@@ -40,7 +38,16 @@ class AuthController {
             $error = "Invalid Username or Password!";
         }
 
-        // Load view
+      
         require "view/login.php";
     }
+
+    public function logout() {
+        session_unset();
+        session_destroy();
+
+        header("Location: index.php?page=home");
+        exit;
+    }
 }
+

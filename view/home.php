@@ -121,7 +121,7 @@
         <?php if (!empty($bestSellingProducts)): ?>
             <?php foreach ($bestSellingProducts as $product): ?>
                 
-                <form action="cart.php" method="POST" class="card">
+                <form action="index.php?page=cart" method="POST" class="card">
                     <?php if ($product['old_price'] > $product['price']): ?>
                         <div class="badge">
                             -<?= round((($product['old_price'] - $product['price']) / $product['old_price']) * 100); ?>%
@@ -139,22 +139,31 @@
                         <h3 class="card-title"><?= htmlspecialchars($product['product_name']); ?></h3>
                         <div class="card-price">
                             $<?= number_format($product['price'], 2); ?>
-                            <span class="card-unit">/kg</span>
+                            <span class="card-unit"></span>
                         </div>
                     </div>
 
                     <input type="hidden" name="product_id" value="<?= $product['product_id']; ?>">
                     <input type="hidden" name="product_name" value="<?= htmlspecialchars($product['product_name']); ?>">
                     <input type="hidden" name="price" value="<?= $product['price']; ?>">
+                    <input type="hidden" name="image" value="assets/uploads/products/<?= htmlspecialchars($product['image']); ?>">
                     
-                    <div class="card-actions">
-                        <div class="counter">
-                            <button type="button" class="counter-btn minus">-</button>
-                            <input type="text" class="counter-input" value="1" readonly>
-                            <button type="button" class="counter-btn plus">+</button>
+                    <div class="product-card">
+                        <div class="card-actions">
+                            <div class="counter">
+                                <button type="button" class="counter-btn minus">-</button>
+                                <input type="text" class="counter-input" value="1" readonly>
+                                <button type="button" class="counter-btn plus">+</button>
+                            </div>
+                            <form action="index.php?page=cart" method="POST">
+                                <input type="hidden" name="quantity" class="quantity-field" value="1">
+                                <button type="submit" class="add-to-cart-btn">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </button>
+                            </form>
                         </div>
-                        <button type="submit" class="add-to-cart-btn"><i class="fas fa-shopping-bag"></i></button>
                     </div>
+
                 </form>
 
             <?php endforeach; ?>
@@ -164,6 +173,6 @@
     </div>
 </div>
 
-<script src="assets/js/main.js"></script>
+
 
 <?php include 'view/layout/footer.php'; ?>

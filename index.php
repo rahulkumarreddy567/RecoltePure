@@ -14,6 +14,13 @@ switch ($page) {
         $controller = new AuthController();
         $controller->login();
         break;
+    
+    case 'logout':
+        require_once "controller/AuthController.php";
+        $authCtrl = new AuthController();
+        $authCtrl->logout();
+        break;
+
 
     case 'home':
     default:
