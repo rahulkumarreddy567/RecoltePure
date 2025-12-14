@@ -25,4 +25,12 @@ switch ($page) {
         $controller = new CategoryController();
         $controller->index();
         break;
+
+    case 'upload_product':
+        require_once "controller/ProductController.php";
+        $controller = new ProductController($db);
+        $controller->loadProduct();
+        $controller->handleUpload();
+        include "view/upload_product.php";
+        break;
 }

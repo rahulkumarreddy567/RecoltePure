@@ -2,10 +2,11 @@
 
 <?php if ($userData['role'] === 'farmer'): ?>
     <div class="farmer-actions">
-        <form action="upload_products.php" method="GET">
-            <button type="submit" class="btn-upload">Upload Products</button>
-        </form>
-    </div>
+    <a href="index.php?page=upload_product" class="btn-upload">
+        Upload Products
+    </a>
+</div>
+
 <?php endif; ?>
 
 <section class="hero">
