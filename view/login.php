@@ -108,7 +108,7 @@
 
                 <p class="signup-text">
                     Don't have an account?
-                    <a href="registration.php">Sign up</a>
+                    <a href="index.php?page=register">Sign up</a>
                 </p>
 
             </form>

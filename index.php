@@ -53,6 +53,17 @@ switch ($page) {
         $controller = new ContactController($db);
         $controller->index();
         break;
+
+    case 'register':
+        require_once 'controller/RegistrationController.php';
+        $controller = new RegisterController($db);
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->handleRequest();
+        } else {
+            $controller->index();
+        }
+        break;
     
     
 }
