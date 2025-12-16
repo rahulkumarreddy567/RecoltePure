@@ -19,11 +19,11 @@ class AuthController {
 
             // Try farmer login
             $farmer = $farmerModel->findByEmail($email);
-            if ($farmer && password_verify($password, $farmer['password'])) {
+            if ($farmer && password_verify($password, $farmer['password_hash'])) {
                 $_SESSION['login_user'] = $farmer['email'];
                 $_SESSION['role'] = "farmer";
                 $_SESSION['user_name'] = $farmer['name'];
-                header("Location: index.php?page=home");
+                header("Location: /RecoltePure/index.php?page=home");
                 exit;
             }
 
@@ -31,9 +31,9 @@ class AuthController {
             $user = $userModel->findByEmail($email);
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['login_user'] = $user['email'];
-                $_SESSION['role'] = "customer";
+                $_SESSION['role'] = "user";
                 $_SESSION['user_name'] = $user['name'];
-                header("Location: index.php?page=home");
+                header("Location: /RecoltePure/index.php?page=home");
                 exit;
             }
 
