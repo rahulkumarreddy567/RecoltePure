@@ -44,3 +44,4 @@ class AuthController {
         require "view/login.php";
     }
 }
+--- end of file controller/AuthController.php
