@@ -78,6 +78,7 @@
                             <label for="certNumber">Certification number (Farmers only)</label>
                             <input type="text" id="certNumber" name="certNumber" placeholder="Enter certificate number (optional)">
                         </div>
+                        
                     </div>
 
                     <div class="form-group">
