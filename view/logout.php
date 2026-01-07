@@ -1,6 +1,7 @@
 
- <?php
+<?php
 session_start();
 session_destroy();
-header("Location: homepage.php");
+header("Location: /RecoltePure/index.php?page=login");
+exit;
 ?>

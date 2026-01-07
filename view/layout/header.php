@@ -86,7 +86,7 @@ $cartCount = Cart::getTotalQuantity();
   <header>
     <nav class="navbar">
       <div class="logo">
-        <a href="index.php" class="logo">
+        <a href="index.php?page=home" class="logo">
             <img src="assets/uploads/products/Logo.png" alt="RecoltePure Logo" sizes="16x16"/>
             RecoltePure
         </a>
