@@ -1,0 +1,148 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+
+// Ensure database connection is available to controllers that expect $db
+require_once __DIR__ . '/config/db_connection.php';
+
+
+$page = $_GET['page'] ?? 'home'; 
+
+switch ($page) {
+    case 'login':
+        require_once "controller/AuthController.php";
+        $controller = new AuthController();
+        $controller->login();
+        break;
+    
+    case 'logout':
+        require_once "controller/AuthController.php";
+        $authCtrl = new AuthController();
+        $authCtrl->logout();
+        break;
+
+
+    case 'home':
+    default:
+        require_once "controller/HomeController.php";
+        $controller = new HomeController();
+        $controller->index();
+        break;
+
+    case 'categories':
+        require_once "controller/CategoryController.php";
+        $controller = new CategoryController();
+        $controller->index();
+        break;
+
+    case 'upload_product':
+        require_once "controller/ProductController.php";
+        $controller = new ProductController($db); 
+        $controller->showUploadForm();
+        break;
+
+    case 'cart':
+        require_once "controller/CartController.php";
+        $controller = new CartController($db);
+        $controller->handleActions(); 
+        break;
+
+    case 'clear':
+        require_once "controller/CartController.php";
+        $controller = new CartController();
+        $controller->handleActions(); 
+        break;
+
+    case 'contact':
+        require_once 'controller/ContactController.php';
+        $controller = new ContactController($db);
+        $controller->index();
+        break;
+
+    case 'register':
+        require_once 'controller/RegistrationController.php';
+        $controller = new RegisterController($db);
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller->handleRequest();
+        } else {
+            $controller->index();
+        }
+        break;
+
+
+    case 'password_recovery':
+        require_once 'controller/PasswordRecoveryController.php';
+        $controller = new RecoveryController($db);
+        $controller->handleRequest();
+        break;
+
+    case 'reset_password':
+        require_once 'controller/ResetPasswordController.php';
+        $controller = new ResetPasswordController($db);
+        $controller->handleRequest();
+        break;
+
+    case 'profile':
+        require_once 'controller/UserController.php';
+        $controller = new UserController();
+        $controller->profile();
+        break;
+
+
+    case 'edit_profile':
+        require_once 'controller/UserController.php';
+        $controller = new UserController();
+        $controller->edit();
+        break;
+
+    case 'update_profile':
+        require_once 'controller/UserController.php';
+        $controller = new UserController();
+        $controller->update();
+        break;
+
+    case 'write_review':
+        require_once 'controller/ReviewController.php';
+        $controller = new ReviewController($db); 
+        $controller->showReviewForm();
+        break;
+
+    case 'process_review':
+        require_once 'controller/ReviewController.php';
+        $controller = new ReviewController($db);
+        $controller->submitReview();
+        break;
+
+    case 'my_orders':
+        require_once 'controller/OrderController.php';
+        $controller = new OrderController($db); 
+        $controller->myOrders();
+        break;
+    
+    case 'checkout':
+    require_once "controller/CartController.php";
+    $controller = new CartController($db); 
+    $controller->checkout();
+    break;
+
+    case 'admin':
+        require_once "controller/AdminController.php";
+        $controller = new AdminController($db);
+        $controller->route();
+        break;
+
+    case 'faq':
+        require_once 'view/faq.php';
+        break;
+
+    case 'farmers':
+        require_once 'controller/FarmerController.php';
+        $controller = new FarmerController($db);
+        $controller->index();
+        break;
+}
+?>

@@ -1,20 +1,14 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Recolte Pure</title>
-    <link rel="stylesheet" href="../assets/css/Contact.css">
-    
+    <link rel="stylesheet" href="assets/css/Contact.css">
 </head>
 <body>
-    <!-- Hero Section -->
     <section class="hero">
         <div class="back-home">
-            <a href="homepage.php">
+            <a href="index.php?page=home">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
@@ -27,7 +21,8 @@ session_start();
         </div>
     </section>
 
-    <!-- Main Content -->
+
+
     <div class="container">
         <div class="contact-wrapper">
             <!-- Contact Info Cards -->
@@ -65,42 +60,20 @@ session_start();
                 </div>
             </div>
 
-            <!-- Contact Form -->
-            <div class="form-container">
-                <div class="form-header">
-                    <h2>Send Us a Message</h2>
-                    <p>Fill out the form below and we'll get back to you within 24 hours</p>
-                </div>
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Send Us a Message</h2>
+            </div>
 
-                <?php
-                if (isset($_GET['success'])) {
-                    echo '<div class="alert alert-success">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            Your message has been sent successfully! We\'ll get back to you soon.
-                          </div>';
-                }
-                if (isset($_GET['error'])) {
-                    $errorMsg = 'There was an error sending your message. Please try again.';
-                    if ($_GET['error'] == 'required') {
-                        $errorMsg = 'Please fill in all required fields.';
-                    } elseif ($_GET['error'] == 'email') {
-                        $errorMsg = 'Please enter a valid email address.';
-                    }
-                    echo '<div class="alert alert-error">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="12" y1="8" x2="12" y2="12"/>
-                                <line x1="12" y1="16" x2="12.01" y2="16"/>
-                            </svg>
-                            ' . $errorMsg . '
-                          </div>';
-                }
-                ?>
+            <?php if (isset($successMsg)): ?>
+                <div class="alert alert-success"><?php echo $successMsg; ?></div>
+            <?php endif; ?>
 
-                <form action="contact_process.php" method="POST" id="contactForm">
+            <?php if (isset($errorMsg)): ?>
+                <div class="alert alert-error"><?php echo $errorMsg; ?></div>
+            <?php endif; ?>
+
+            <form action="index.php?page=contact" method="POST" id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name <span class="required">*</span></label>
@@ -151,11 +124,10 @@ session_start();
                         Send Message
                     </button>
                 </form>
-            </div>
+        </div>
         </div>
 
-        <!-- Map Section -->
-        <div class="map-section">
+    <div class="map-section">
             <h2 class="map-title">Find Us On Map</h2>
             <div class="map-container">
                 <iframe 
@@ -165,10 +137,11 @@ session_start();
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
-        </div>
+    </div>
+            
     </div>
 
-    <!-- Footer -->
+
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
@@ -176,10 +149,11 @@ session_start();
                 <p>Connecting farmers with consumers in Paris</p>
             </div>
             <div class="footer-links">
-                <a href="homepage.php">Home</a>
-                <a href="categories.php">Categories</a>
+                <a href="index.php?page=home">Home</a>
+                <a href="index.php?page=categories">Categories</a>
                 <a href="best team.php">Our Team</a>
-                <a href="contact.php">Contact</a>
+                <a href="index.php?page=contact">Contact</a>
+                <a href="view/terms_and_conditions.php">Terms & Conditions</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -187,40 +161,9 @@ session_start();
         </div>
     </footer>
 
-    <script>
-        // Form validation
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            const firstName = document.getElementById('firstName').value.trim();
-            const lastName = document.getElementById('lastName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value.trim();
 
-            if (!firstName || !lastName || !email || !subject || !message) {
-                e.preventDefault();
-                alert('Please fill in all required fields.');
-                return false;
-            }
+    
+    
 
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                e.preventDefault();
-                alert('Please enter a valid email address.');
-                return false;
-            }
-        });
-
-        // Auto-hide alerts after 5 seconds
-        setTimeout(function() {
-            const alerts = document.querySelectorAll('.alert');
-            alerts.forEach(function(alert) {
-                alert.style.opacity = '0';
-                setTimeout(function() {
-                    alert.style.display = 'none';
-                }, 300);
-            });
-        }, 5000);
-    </script>
-</body>
+    </body>
 </html>
