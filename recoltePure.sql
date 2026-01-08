@@ -4,7 +4,11 @@
 --
 -- Host: 127.0.0.1
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Generation Time: Dec 11, 2025 at 03:05 PM
+=======
+-- Generation Time: Jan 07, 2026 at 02:10 PM
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
 -- Generation Time: Jan 07, 2026 at 02:10 PM
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
@@ -40,6 +44,7 @@ CREATE TABLE `admins` (
 
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Dumping data for table `announcement`
 --
 
@@ -47,12 +52,17 @@ INSERT INTO `announcement` (`announce_id`, `product_id`, `farmer_id`, `announcem
 (1, 1, 1, '2025-11-12'),
 (2, 2, 3, '2025-11-15');
 =======
+=======
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 -- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`id`, `email`, `password_hash`, `created_at`) VALUES
 (1, 'admin@example.com', '$2y$10$LCNHgKQ7y4/0XWieHzEw4udHNcp7PeLrImnJsNCVPMGHx8dEeDnri', '2025-12-17 09:18:18'),
 (2, 'admin1@gmail.com', '$2y$10$xoM8dphSMyGMeNGHJW7K0OhagLhhcugwame63KbvklXnmGb8.KGSq', '2025-12-17 13:56:42');
+<<<<<<< HEAD
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
+=======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 -- --------------------------------------------------------
@@ -76,7 +86,11 @@ INSERT INTO `categories` (`category_id`, `category_name`, `image`) VALUES
 (2, 'vegetable\r\n', NULL),
 (3, 'herbs', NULL),
 <<<<<<< HEAD
+<<<<<<< HEAD
 (4, 'milk', NULL);
+=======
+(4, 'Dairy Product', NULL);
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
 (4, 'Dairy Product', NULL);
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
@@ -122,6 +136,9 @@ INSERT INTO `contact_messages` (`id`, `first_name`, `last_name`, `email`, `phone
 (2, 'Khushi', 'gajjar', 'khushigajjar218@gmail.com', '+917043022473', 'products', 'When will my product arrive?', '2025-12-17 15:54:02', 'new'),
 (3, 'Khushi', 'Gajjar', 'khushigajjar218@gmail.com', '+917043022473', 'feedback', 'qwergthyjkl', '2025-12-17 15:54:21', 'new'),
 (4, 'Khushi', 'Gajjar', 'khushigajjar218@gmail.com', '+917043022473', 'products', 'when product arrive?', '2025-12-17 16:03:26', 'new');
+<<<<<<< HEAD
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
+=======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 -- --------------------------------------------------------
@@ -145,8 +162,11 @@ CREATE TABLE `delivery` (
 
 INSERT INTO `delivery` (`delivery_id`, `order_id`, `delivery_date`, `delivery_status`, `delivery_partner`, `tracking_number`) VALUES
 <<<<<<< HEAD
+<<<<<<< HEAD
 (1, 1, '2025-11-21', 'Confirmed', 'xyz', '1234hb');
 =======
+=======
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 (1, 1, '2025-11-21', 'Confirmed', 'xyz', '1234hb'),
 (101, 500, '2025-12-16', 'Delivered', 'FastShip', 'TRK123456789'),
 (1765919776, 1765919776, '2025-12-16', 'Pending', 'Waiting', 'N/A'),
@@ -166,6 +186,9 @@ INSERT INTO `delivery` (`delivery_id`, `order_id`, `delivery_date`, `delivery_st
 (1765978056, 1765978056, '2025-12-17', 'Pending', 'Waiting', 'N/A'),
 (1765982449, 1765982449, '2025-12-17', 'Pending', 'Waiting', 'N/A'),
 (1765983661, 1765983661, '2025-12-17', 'Pending', 'Waiting', 'N/A');
+<<<<<<< HEAD
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
+=======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 -- --------------------------------------------------------
@@ -184,6 +207,7 @@ CREATE TABLE `farmer` (
   `verification_date` date DEFAULT NULL,
   `registration_date` datetime DEFAULT NULL,
 <<<<<<< HEAD
+<<<<<<< HEAD
   `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -198,6 +222,12 @@ INSERT INTO `farmer` (`farmer_id`, `name`, `email`, `phone_number`, `address`, `
 
 -- --------------------------------------------------------
 
+=======
+  `password` varchar(255) DEFAULT NULL,
+  `account_status` enum('Pending','Verified') DEFAULT 'Pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
   `password` varchar(255) DEFAULT NULL,
   `account_status` enum('Pending','Verified') DEFAULT 'Pending'
@@ -227,6 +257,7 @@ CREATE TABLE `order_or_cart` (
   `order_cart_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `delivery_id` int(11) NOT NULL,
+<<<<<<< HEAD
 <<<<<<< HEAD
   `announce_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -258,6 +289,9 @@ CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
 =======
   `product_id` int(11) NOT NULL,
+=======
+  `product_id` int(11) NOT NULL,
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
   `quantity` int(11) NOT NULL DEFAULT 1,
   `total_price` decimal(10,2) NOT NULL,
   `delivery_date` datetime NOT NULL
@@ -291,6 +325,9 @@ INSERT INTO `order_or_cart` (`order_cart_id`, `customer_id`, `delivery_id`, `pro
 
 CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
+<<<<<<< HEAD
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
+=======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
   `created_on` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   `farmer_id` int(11) DEFAULT NULL,
@@ -298,7 +335,11 @@ CREATE TABLE `products` (
   `product_name` varchar(100) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
 <<<<<<< HEAD
+<<<<<<< HEAD
   `old_price` int(11) NOT NULL,
+=======
+  `old_price` int(11) DEFAULT NULL,
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
   `old_price` int(11) DEFAULT NULL,
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
@@ -313,6 +354,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`product_id`, `created_on`, `farmer_id`, `category_id`, `product_name`, `price`, `old_price`, `stock_quantity`, `product_description`, `image`) VALUES
 <<<<<<< HEAD
+<<<<<<< HEAD
 (1, '2025-12-07 11:07:37.359518', 1, 1, 'Apple', 5.00, 3, 10, '', ''),
 (2, '2025-12-07 11:07:37.359518', 1, 2, 'Mango', 8.00, 8, 5, '', ''),
 (3, '2025-12-07 11:07:37.359518', 1, 2, 'tomatoes', 25.00, 25, 5, 'Red tomatoes', ''),
@@ -320,6 +362,8 @@ INSERT INTO `products` (`product_id`, `created_on`, `farmer_id`, `category_id`, 
 (5, '2025-12-10 14:59:21.782920', 2, 3, 'Bay Leaf', 50.00, 45, 40, 'BAy Leaf', '1765375161_bayleaf (2).png'),
 (6, '2025-12-10 15:42:05.974859', 2, 3, 'oregano', 100.00, 90, 60, 'Oregano is a species of flowering plant in the mint family, Lamiaceae.', '1765377725_oregano.png');
 =======
+=======
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 (5, '2025-12-10 14:59:21.782920', 2, 3, 'Bay Leaf', 50.00, 45, 40, 'BAy Leaf', '1765375161_bayleaf (2).png'),
 (6, '2025-12-10 15:42:05.974859', 2, 3, 'oregano', 100.00, 90, 60, 'Oregano is a species of flowering plant in the mint family, Lamiaceae.', '1765377725_oregano.png'),
 (7, '2025-12-12 07:52:50.408547', 4, 4, 'Gelato', 60.00, 60, 100, 'Handmade from whole milk, sugar, and other flavourings, typically fruit, chocolate, and nuts', '1765522370_gelato.png'),
@@ -382,6 +426,9 @@ INSERT INTO `product_reviews` (`review_id`, `user_id`, `product_id`, `rating`, `
 (1, 1, 20, 4, 'Good Quality', '2025-12-17 08:03:41'),
 (2, 1, 17, 2, 'Bad Product', '2025-12-17 12:03:00'),
 (3, 1, 37, 4, 'wergbnm', '2025-12-17 15:03:30');
+<<<<<<< HEAD
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
+=======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 -- --------------------------------------------------------
@@ -428,13 +475,19 @@ CREATE TABLE `users` (
 --
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 INSERT INTO `users` (`customer_id`, `name`, `email`, `address`, `password`, `registration_date`) VALUES
 (1, 'Khushi', 'khushigajjar218@gmail.com', 'qwer', '1234', '2025-11-14 14:07:03');
 =======
+=======
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 INSERT INTO `users` (`customer_id`, `name`, `email`, `phone_number`, `address`, `password`, `registration_date`) VALUES
 (1, 'Khushi', 'khushigajjar218@gmail.com', 704302247, 'Issy Les Moulineaux', '$2y$10$zW7DswCLG70xGE3JVbbbz.77491DAqNDc3PH5tlUtz0.UhKFR3c0i', '2025-11-14 14:07:03'),
 (2, 'Dhara Gajjar', 'd@gmail.com', 741874152, 'Issy Les Moulineaux', '$2y$10$an/MU.aEDr/VlU9w/MVWn.1v5oQw28/H6/doyC0Mkw.PkvQxVXIAy', '2025-12-15 12:39:19'),
 (5, 'Emily Cooper', 'e@gmail.com', 741258965, 'Paris', '$2y$10$WNrsSM1IcWa8mcLuTsaHIu144fRkOt.OPt4MovDOV0Kg00G/4skBK', '2026-01-07 11:16:28');
+<<<<<<< HEAD
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
+=======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 --
@@ -486,6 +539,7 @@ ALTER TABLE `order_or_cart`
 -- Indexes for table `products`
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`payment_id`),
   ADD KEY `fk_payment_order1_idx` (`order_customer_id`,`order_delivery_id`);
@@ -493,6 +547,8 @@ ALTER TABLE `payment`
 --
 -- Indexes for table `products`
 --
+=======
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 ALTER TABLE `products`
@@ -528,8 +584,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
 ALTER TABLE `announcement`
   MODIFY `announce_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+=======
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
@@ -547,13 +608,19 @@ ALTER TABLE `categories`
 ALTER TABLE `certificate`
   MODIFY `certificate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 --
 -- AUTO_INCREMENT for table `contact_messages`
 --
 ALTER TABLE `contact_messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+<<<<<<< HEAD
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
+=======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 --
@@ -561,7 +628,11 @@ ALTER TABLE `contact_messages`
 --
 ALTER TABLE `delivery`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+=======
+  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1765983662;
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
   MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1765983662;
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
@@ -571,7 +642,11 @@ ALTER TABLE `delivery`
 --
 ALTER TABLE `farmer`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `farmer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+=======
+  MODIFY `farmer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
   MODIFY `farmer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
@@ -587,8 +662,11 @@ ALTER TABLE `order_or_cart`
 --
 ALTER TABLE `products`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 =======
+=======
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
@@ -596,6 +674,9 @@ ALTER TABLE `products`
 --
 ALTER TABLE `product_reviews`
   MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+<<<<<<< HEAD
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
+=======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 --
@@ -609,7 +690,11 @@ ALTER TABLE `reviews`
 --
 ALTER TABLE `users`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+=======
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
@@ -620,6 +705,7 @@ ALTER TABLE `users`
 
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Constraints for table `announcement`
 --
 ALTER TABLE `announcement`
@@ -627,6 +713,8 @@ ALTER TABLE `announcement`
   ADD CONSTRAINT `fk_Announcement_farmer` FOREIGN KEY (`farmer_id`) REFERENCES `farmer` (`farmer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+=======
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 -- Constraints for table `certificate`
@@ -639,8 +727,14 @@ ALTER TABLE `certificate`
 --
 ALTER TABLE `order_or_cart`
 <<<<<<< HEAD
+<<<<<<< HEAD
   ADD CONSTRAINT `fk_order_delivery1` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_order_user` FOREIGN KEY (`customer_id`) REFERENCES `users` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+=======
+  ADD CONSTRAINT `fk_order_customer` FOREIGN KEY (`customer_id`) REFERENCES `users` (`customer_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_order_delivery` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_order_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
   ADD CONSTRAINT `fk_order_customer` FOREIGN KEY (`customer_id`) REFERENCES `users` (`customer_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_order_delivery` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`) ON DELETE CASCADE,
@@ -651,12 +745,15 @@ ALTER TABLE `order_or_cart`
 -- Constraints for table `products`
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
 ALTER TABLE `payment`
   ADD CONSTRAINT `fk_payment_order1` FOREIGN KEY (`order_customer_id`,`order_delivery_id`) REFERENCES `order_or_cart` (`customer_id`, `delivery_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `products`
 --
+=======
+>>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 =======
 >>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 ALTER TABLE `products`
