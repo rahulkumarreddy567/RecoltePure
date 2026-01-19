@@ -11,7 +11,7 @@ class StripePayment {
             $dotenv = Dotenv::createImmutable(dirname(__DIR__));
             $dotenv->load();
         }
-        $apiKey = $_ENV['STRIPE_SECRET_KEY'] ?? getenv('STRIPE_SECRET_KEY');
+        $apiKey = getenv('STRIPE_SECRET_KEY');
         if (!$apiKey) {
             throw new Exception('Stripe secret key not set in .env');
         }
