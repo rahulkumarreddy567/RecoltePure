@@ -6,7 +6,9 @@ RUN docker-php-ext-install mysqli
 
 
 # Ensure only one MPM is enabled (mpm_event is default in php:apache)
-RUN a2dismod mpm_prefork mpm_worker && a2enmod mpm_event && a2enmod rewrite
+RUN a2dismod mpm_prefork mpm_worker && a2enmod mpm_event
+# Enable Apache mod_rewrite if needed
+RUN a2enmod rewrite
 
 # Copy project files to the container
 COPY . /var/www/html/
