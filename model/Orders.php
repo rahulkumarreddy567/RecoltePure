@@ -26,7 +26,7 @@ class OrderModel
             
             WHERE oc.customer_id = ?
             GROUP BY oc.delivery_id
-            ORDER BY oc.delivery_date DESC";
+            ORDER BY order_date DESC";
 
         $stmt = $this->db->prepare($sql);
 
@@ -114,7 +114,7 @@ class OrderModel
         }
         $stmt->close();
 
-      
+
         $sqlItem = "INSERT INTO order_or_cart 
                     (customer_id, delivery_id, product_id, quantity, total_price, delivery_date, 
                      payment_status, payment_method, transaction_id, payment_date, amount_paid) 
@@ -154,7 +154,7 @@ class OrderModel
             $p_productId = isset($item['product_id']) ? $item['product_id'] : $keyId;
             $p_quantity = $item['quantity'];
             $p_totalPrice = $item['price'] * $item['quantity'];
-            $p_amountPaid = $p_totalPrice; 
+            $p_amountPaid = $p_totalPrice;
 
             if (!$p_productId)
                 $p_productId = 0;
@@ -165,14 +165,14 @@ class OrderModel
         }
         $stmtItem->close();
 
-        return $newDeliveryId; 
+        return $newDeliveryId;
     }
 
 
 
     public function getOrderItems($deliveryId)
     {
-        
+
         $sql = "SELECT oc.product_id, p.product_name, p.image 
                 FROM order_or_cart oc
                 JOIN products p ON oc.product_id = p.product_id
