@@ -13,10 +13,11 @@ if ($envUrl) {
     $port = $urlParts['port'] ?? 3306;
 } else {
     // Fallback to individual variables
-    $servername = getenv('DB_HOST') ?: getenv('MYSQLHOST') ?: 'localhost';
-    $username = getenv('DB_USER') ?: getenv('MYSQLUSER') ?: 'root';
-    $password = getenv('DB_PASS') ?: getenv('MYSQLPASSWORD') ?: '';
-    $database = getenv('DB_NAME') ?: getenv('MYSQLDATABASE') ?: 'recoltepure';
+    // Prioritize MYSQL* variables (Railway standard) over DB_* as DB_HOST might be misconfigured
+    $servername = getenv('MYSQLHOST') ?: getenv('DB_HOST') ?: 'localhost';
+    $username = getenv('MYSQLUSER') ?: getenv('DB_USER') ?: 'root';
+    $password = getenv('MYSQLPASSWORD') ?: getenv('DB_PASS') ?: '';
+    $database = getenv('MYSQLDATABASE') ?: getenv('DB_NAME') ?: 'recoltepure';
     $port = getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: 3306;
 
     $servername = str_replace('tcp://', '', $servername);
