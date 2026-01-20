@@ -13,10 +13,10 @@ if ($envUrl) {
     $port = $urlParts['port'] ?? 3306;
 } else {
     // Fallback to individual variables
-    $servername = getenv('DB_HOST') ?: 'localhost';
-    $username = getenv('DB_USER') ?: 'root';
-    $password = getenv('DB_PASS') ?: '';
-    $database = getenv('DB_NAME') ?: 'recoltepure';
+    $servername = getenv('DB_HOST') ?: getenv('MYSQLHOST') ?: 'localhost';
+    $username = getenv('DB_USER') ?: getenv('MYSQLUSER') ?: 'root';
+    $password = getenv('DB_PASS') ?: getenv('MYSQLPASSWORD') ?: '';
+    $database = getenv('DB_NAME') ?: getenv('MYSQLDATABASE') ?: 'recoltepure';
     $port = getenv('DB_PORT') ?: getenv('MYSQLPORT') ?: 3306;
 
     $servername = str_replace('tcp://', '', $servername);

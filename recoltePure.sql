@@ -3,15 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
-<<<<<<< HEAD
--- Generation Time: Dec 11, 2025 at 03:05 PM
-=======
 -- Generation Time: Jan 07, 2026 at 02:10 PM
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
--- Generation Time: Jan 07, 2026 at 02:10 PM
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,27 +35,33 @@ CREATE TABLE `admins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
-<<<<<<< HEAD
-<<<<<<< HEAD
--- Dumping data for table `announcement`
---
-
-INSERT INTO `announcement` (`announce_id`, `product_id`, `farmer_id`, `announcement_date`) VALUES
-(1, 1, 1, '2025-11-12'),
-(2, 2, 3, '2025-11-15');
-=======
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 -- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`id`, `email`, `password_hash`, `created_at`) VALUES
 (1, 'admin@example.com', '$2y$10$LCNHgKQ7y4/0XWieHzEw4udHNcp7PeLrImnJsNCVPMGHx8dEeDnri', '2025-12-17 09:18:18'),
 (2, 'admin1@gmail.com', '$2y$10$xoM8dphSMyGMeNGHJW7K0OhagLhhcugwame63KbvklXnmGb8.KGSq', '2025-12-17 13:56:42');
-<<<<<<< HEAD
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcement`
+--
+
+CREATE TABLE `announcement` (
+  `announce_id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `farmer_id` int(11) DEFAULT NULL,
+  `announcement_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `announcement`
+--
+
+INSERT INTO `announcement` (`announce_id`, `product_id`, `farmer_id`, `announcement_date`) VALUES
+(1, 1, 1, '2025-11-12'),
+(2, 2, 3, '2025-11-15');
 
 -- --------------------------------------------------------
 
@@ -85,15 +83,7 @@ INSERT INTO `categories` (`category_id`, `category_name`, `image`) VALUES
 (1, 'fruits', NULL),
 (2, 'vegetable\r\n', NULL),
 (3, 'herbs', NULL),
-<<<<<<< HEAD
-<<<<<<< HEAD
-(4, 'milk', NULL);
-=======
 (4, 'Dairy Product', NULL);
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
-(4, 'Dairy Product', NULL);
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 -- --------------------------------------------------------
 
@@ -111,10 +101,15 @@ CREATE TABLE `certificate` (
 -- Dumping data for table `certificate`
 --
 
-<<<<<<< HEAD
 INSERT INTO `certificate` (`certificate_id`, `certificate_name`, `farmer_id`) VALUES
 (1, 'farmer_certificate', 1);
-=======
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_messages`
+--
+
 CREATE TABLE `contact_messages` (
   `id` int(11) NOT NULL,
   `first_name` varchar(100) NOT NULL,
@@ -136,10 +131,6 @@ INSERT INTO `contact_messages` (`id`, `first_name`, `last_name`, `email`, `phone
 (2, 'Khushi', 'gajjar', 'khushigajjar218@gmail.com', '+917043022473', 'products', 'When will my product arrive?', '2025-12-17 15:54:02', 'new'),
 (3, 'Khushi', 'Gajjar', 'khushigajjar218@gmail.com', '+917043022473', 'feedback', 'qwergthyjkl', '2025-12-17 15:54:21', 'new'),
 (4, 'Khushi', 'Gajjar', 'khushigajjar218@gmail.com', '+917043022473', 'products', 'when product arrive?', '2025-12-17 16:03:26', 'new');
-<<<<<<< HEAD
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 -- --------------------------------------------------------
 
@@ -161,12 +152,6 @@ CREATE TABLE `delivery` (
 --
 
 INSERT INTO `delivery` (`delivery_id`, `order_id`, `delivery_date`, `delivery_status`, `delivery_partner`, `tracking_number`) VALUES
-<<<<<<< HEAD
-<<<<<<< HEAD
-(1, 1, '2025-11-21', 'Confirmed', 'xyz', '1234hb');
-=======
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 (1, 1, '2025-11-21', 'Confirmed', 'xyz', '1234hb'),
 (101, 500, '2025-12-16', 'Delivered', 'FastShip', 'TRK123456789'),
 (1765919776, 1765919776, '2025-12-16', 'Pending', 'Waiting', 'N/A'),
@@ -186,10 +171,6 @@ INSERT INTO `delivery` (`delivery_id`, `order_id`, `delivery_date`, `delivery_st
 (1765978056, 1765978056, '2025-12-17', 'Pending', 'Waiting', 'N/A'),
 (1765982449, 1765982449, '2025-12-17', 'Pending', 'Waiting', 'N/A'),
 (1765983661, 1765983661, '2025-12-17', 'Pending', 'Waiting', 'N/A');
-<<<<<<< HEAD
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 -- --------------------------------------------------------
 
@@ -206,39 +187,16 @@ CREATE TABLE `farmer` (
   `certificate_number` varchar(45) DEFAULT NULL,
   `verification_date` date DEFAULT NULL,
   `registration_date` datetime DEFAULT NULL,
-<<<<<<< HEAD
-<<<<<<< HEAD
-  `password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `farmer`
---
-
-INSERT INTO `farmer` (`farmer_id`, `name`, `email`, `phone_number`, `address`, `certificate_number`, `verification_date`, `registration_date`, `password`) VALUES
-(1, 'John', 'john@example.com', '7043022473', 'Paris', '1', '2025-11-04', '2025-11-04 00:00:00', 'xyz'),
-(2, 'Max', 'max2@gmail.com', '7896541230', 'Paris, France', '2', '2025-11-06', '2025-11-06 00:00:00', 'asd'),
-(3, 'John Doe', 'johndoe@gmail.com', '7412589631', '123 Farm Lane, Springfield', '3', '2025-11-04', '2025-11-04 00:00:00', 'hashed_password_123');
-
--- --------------------------------------------------------
-
-=======
   `password` varchar(255) DEFAULT NULL,
   `account_status` enum('Pending','Verified') DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
-  `password` varchar(255) DEFAULT NULL,
-  `account_status` enum('Pending','Verified') DEFAULT 'Pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 --
 -- Dumping data for table `farmer`
 --
 
 INSERT INTO `farmer` (`farmer_id`, `name`, `email`, `phone_number`, `address`, `certificate_number`, `verification_date`, `registration_date`, `password`, `account_status`) VALUES
+(1, 'John', 'john@example.com', '7043022473', 'Paris', '1', '2025-11-04', '2025-11-04 00:00:00', 'xyz', 'Verified'),
 (2, 'Max', 'max2@gmail.com', '7896541230', 'Paris, France', '2', '2025-11-06', '2025-11-06 00:00:00', '$2y$10$XncH1lTL8S205ZlRI70wv.l2oa28HP.NZgM2gZ8APtGvPzo6YV0Hq', 'Verified'),
 (3, 'John Doe', 'john@gmail.com', '7412589631', '123 Farm Lane, Springfield', '3', '2025-11-04', '2025-11-04 00:00:00', '$2y$10$9ruOL7x2T2Utejl96Mp2MOh2xQB/I2R/R0SMp3G55LokeoWGjpuR2', 'Pending'),
 (4, 'Lexi Hensler', 'lexi@gmail.com', '78945613', 'Porte de Vanes', '4', '2025-12-13', '2025-12-12 00:00:00', '$2y$10$HTmsHbOkAKOgOMSgu6D/meBVkp1ET6fE4Th98nmiqWkoRy0ncPc3.', 'Pending'),
@@ -257,9 +215,10 @@ CREATE TABLE `order_or_cart` (
   `order_cart_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `delivery_id` int(11) NOT NULL,
-<<<<<<< HEAD
-<<<<<<< HEAD
-  `announce_id` int(11) DEFAULT NULL
+  `product_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `total_price` decimal(10,2) DEFAULT NULL,
+  `delivery_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -287,62 +246,12 @@ CREATE TABLE `payment` (
 
 CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
-=======
-  `product_id` int(11) NOT NULL,
-=======
-  `product_id` int(11) NOT NULL,
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-  `quantity` int(11) NOT NULL DEFAULT 1,
-  `total_price` decimal(10,2) NOT NULL,
-  `delivery_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `order_or_cart`
---
-
-INSERT INTO `order_or_cart` (`order_cart_id`, `customer_id`, `delivery_id`, `product_id`, `quantity`, `total_price`, `delivery_date`) VALUES
-(1, 1, 1765924870, 20, 1, 520.00, '2025-12-16 23:41:10'),
-(2, 1, 1765924870, 38, 1, 1890.00, '2025-12-16 23:41:10'),
-(3, 1, 1765925021, 41, 1, 500.00, '2025-12-16 23:43:41'),
-(4, 1, 1765957906, 37, 1, 60.00, '2025-12-17 08:51:46'),
-(5, 1, 1765965730, 17, 1, 180.00, '2025-12-17 11:02:10'),
-(6, 1, 1765973842, 30, 1, 1800.00, '2025-12-17 13:17:22'),
-(7, 1, 1765973869, 37, 1, 300.00, '2025-12-17 13:17:49'),
-(8, 1, 1765973869, 15, 1, 250.00, '2025-12-17 13:17:49'),
-(9, 1, 1765976888, 39, 1, 140.00, '2025-12-17 14:08:08'),
-(10, 1, 1765976888, 41, 1, 500.00, '2025-12-17 14:08:08'),
-(11, 1, 1765978056, 39, 1, 70.00, '2025-12-17 14:27:36'),
-(12, 1, 1765982449, 42, 1, 1200.00, '2025-12-17 15:40:49'),
-(13, 1, 1765983661, 26, 1, 500.00, '2025-12-17 16:01:01'),
-(14, 1, 1765983661, 37, 1, 60.00, '2025-12-17 16:01:01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
---
-
-CREATE TABLE `products` (
-  `product_id` int(11) NOT NULL,
-<<<<<<< HEAD
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
   `created_on` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   `farmer_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `product_name` varchar(100) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
-<<<<<<< HEAD
-<<<<<<< HEAD
-  `old_price` int(11) NOT NULL,
-=======
   `old_price` int(11) DEFAULT NULL,
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
-  `old_price` int(11) DEFAULT NULL,
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
   `stock_quantity` int(11) DEFAULT NULL,
   `product_description` varchar(1000) NOT NULL,
   `image` varchar(255) NOT NULL
@@ -353,17 +262,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `created_on`, `farmer_id`, `category_id`, `product_name`, `price`, `old_price`, `stock_quantity`, `product_description`, `image`) VALUES
-<<<<<<< HEAD
-<<<<<<< HEAD
 (1, '2025-12-07 11:07:37.359518', 1, 1, 'Apple', 5.00, 3, 10, '', ''),
 (2, '2025-12-07 11:07:37.359518', 1, 2, 'Mango', 8.00, 8, 5, '', ''),
 (3, '2025-12-07 11:07:37.359518', 1, 2, 'tomatoes', 25.00, 25, 5, 'Red tomatoes', ''),
 (4, '2025-12-07 11:07:37.359518', 1, 2, 'cabbage ', 40.00, 35, 10, 'Fresh Cabbage', ''),
-(5, '2025-12-10 14:59:21.782920', 2, 3, 'Bay Leaf', 50.00, 45, 40, 'BAy Leaf', '1765375161_bayleaf (2).png'),
-(6, '2025-12-10 15:42:05.974859', 2, 3, 'oregano', 100.00, 90, 60, 'Oregano is a species of flowering plant in the mint family, Lamiaceae.', '1765377725_oregano.png');
-=======
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 (5, '2025-12-10 14:59:21.782920', 2, 3, 'Bay Leaf', 50.00, 45, 40, 'BAy Leaf', '1765375161_bayleaf (2).png'),
 (6, '2025-12-10 15:42:05.974859', 2, 3, 'oregano', 100.00, 90, 60, 'Oregano is a species of flowering plant in the mint family, Lamiaceae.', '1765377725_oregano.png'),
 (7, '2025-12-12 07:52:50.408547', 4, 4, 'Gelato', 60.00, 60, 100, 'Handmade from whole milk, sugar, and other flavourings, typically fruit, chocolate, and nuts', '1765522370_gelato.png'),
@@ -426,10 +328,6 @@ INSERT INTO `product_reviews` (`review_id`, `user_id`, `product_id`, `rating`, `
 (1, 1, 20, 4, 'Good Quality', '2025-12-17 08:03:41'),
 (2, 1, 17, 2, 'Bad Product', '2025-12-17 12:03:00'),
 (3, 1, 37, 4, 'wergbnm', '2025-12-17 15:03:30');
-<<<<<<< HEAD
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 -- --------------------------------------------------------
 
@@ -474,21 +372,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-INSERT INTO `users` (`customer_id`, `name`, `email`, `address`, `password`, `registration_date`) VALUES
-(1, 'Khushi', 'khushigajjar218@gmail.com', 'qwer', '1234', '2025-11-14 14:07:03');
-=======
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 INSERT INTO `users` (`customer_id`, `name`, `email`, `phone_number`, `address`, `password`, `registration_date`) VALUES
 (1, 'Khushi', 'khushigajjar218@gmail.com', 704302247, 'Issy Les Moulineaux', '$2y$10$zW7DswCLG70xGE3JVbbbz.77491DAqNDc3PH5tlUtz0.UhKFR3c0i', '2025-11-14 14:07:03'),
 (2, 'Dhara Gajjar', 'd@gmail.com', 741874152, 'Issy Les Moulineaux', '$2y$10$an/MU.aEDr/VlU9w/MVWn.1v5oQw28/H6/doyC0Mkw.PkvQxVXIAy', '2025-12-15 12:39:19'),
 (5, 'Emily Cooper', 'e@gmail.com', 741258965, 'Paris', '$2y$10$WNrsSM1IcWa8mcLuTsaHIu144fRkOt.OPt4MovDOV0Kg00G/4skBK', '2026-01-07 11:16:28');
-<<<<<<< HEAD
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 --
 -- Indexes for dumped tables
@@ -500,6 +387,14 @@ INSERT INTO `users` (`customer_id`, `name`, `email`, `phone_number`, `address`, 
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`announce_id`),
+  ADD KEY `fk_Announcement_Product` (`product_id`),
+  ADD KEY `fk_Announcement_farmer` (`farmer_id`);
 
 --
 -- Indexes for table `categories`
@@ -536,10 +431,8 @@ ALTER TABLE `order_or_cart`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `products`
+-- Indexes for table `payment`
 --
-<<<<<<< HEAD
-<<<<<<< HEAD
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`payment_id`),
   ADD KEY `fk_payment_order1_idx` (`order_customer_id`,`order_delivery_id`);
@@ -547,10 +440,6 @@ ALTER TABLE `payment`
 --
 -- Indexes for table `products`
 --
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
   ADD KEY `fk_Product_Categories1_idx` (`category_id`),
@@ -580,191 +469,68 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `admins`
---
-<<<<<<< HEAD
-<<<<<<< HEAD
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 ALTER TABLE `announcement`
   MODIFY `announce_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-=======
-ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
-ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
---
--- AUTO_INCREMENT for table `categories`
---
 ALTER TABLE `categories`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- AUTO_INCREMENT for table `certificate`
---
 ALTER TABLE `certificate`
   MODIFY `certificate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
---
--- AUTO_INCREMENT for table `contact_messages`
---
 ALTER TABLE `contact_messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-<<<<<<< HEAD
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
---
--- AUTO_INCREMENT for table `delivery`
---
 ALTER TABLE `delivery`
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1765983662;
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
-  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1765983662;
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
---
--- AUTO_INCREMENT for table `farmer`
---
 ALTER TABLE `farmer`
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `farmer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-=======
   MODIFY `farmer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
-  MODIFY `farmer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
---
--- AUTO_INCREMENT for table `order_or_cart`
---
 ALTER TABLE `order_or_cart`
   MODIFY `order_cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
---
--- AUTO_INCREMENT for table `products`
---
 ALTER TABLE `products`
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-=======
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
---
--- AUTO_INCREMENT for table `product_reviews`
---
 ALTER TABLE `product_reviews`
   MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-<<<<<<< HEAD
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
---
--- AUTO_INCREMENT for table `reviews`
---
 ALTER TABLE `reviews`
   MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
--- AUTO_INCREMENT for table `users`
---
 ALTER TABLE `users`
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-=======
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
 --
 -- Constraints for dumped tables
 --
 
---
-<<<<<<< HEAD
-<<<<<<< HEAD
--- Constraints for table `announcement`
---
 ALTER TABLE `announcement`
   ADD CONSTRAINT `fk_Announcement_Product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Announcement_farmer` FOREIGN KEY (`farmer_id`) REFERENCES `farmer` (`farmer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
--- Constraints for table `certificate`
---
 ALTER TABLE `certificate`
   ADD CONSTRAINT `fk_certificate_farmer` FOREIGN KEY (`farmer_id`) REFERENCES `farmer` (`farmer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Constraints for table `order_or_cart`
---
 ALTER TABLE `order_or_cart`
-<<<<<<< HEAD
-<<<<<<< HEAD
-  ADD CONSTRAINT `fk_order_delivery1` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_order_user` FOREIGN KEY (`customer_id`) REFERENCES `users` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-=======
   ADD CONSTRAINT `fk_order_customer` FOREIGN KEY (`customer_id`) REFERENCES `users` (`customer_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_order_delivery` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_order_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
-  ADD CONSTRAINT `fk_order_customer` FOREIGN KEY (`customer_id`) REFERENCES `users` (`customer_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_order_delivery` FOREIGN KEY (`delivery_id`) REFERENCES `delivery` (`delivery_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_order_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 
---
--- Constraints for table `products`
---
-<<<<<<< HEAD
-<<<<<<< HEAD
 ALTER TABLE `payment`
   ADD CONSTRAINT `fk_payment_order1` FOREIGN KEY (`order_customer_id`,`order_delivery_id`) REFERENCES `order_or_cart` (`customer_id`, `delivery_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Constraints for table `products`
---
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
-=======
->>>>>>> 7928fce622994d89d05cd6932305082159fb8a3c
 ALTER TABLE `products`
   ADD CONSTRAINT `fk_Product_Categories1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Product_farmer1` FOREIGN KEY (`farmer_id`) REFERENCES `farmer` (`farmer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Constraints for table `product_reviews`
---
 ALTER TABLE `product_reviews`
   ADD CONSTRAINT `fk_review_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
