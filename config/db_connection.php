@@ -21,7 +21,8 @@ if ($envUrl) {
     }
     $servername = $envHost;
     $username = getenv('MYSQLUSER') ?: getenv('DB_USER') ?: 'root';
-    $password = getenv('MYSQLPASSWORD') ?: getenv('DB_PASS') ?: '';
+    // Fallback to the password found in your Railway dashboard screenshot
+    $password = getenv('MYSQLPASSWORD') ?: getenv('MYSQL_ROOT_PASSWORD') ?: getenv('DB_PASS') ?: 'OLoafkYBQjqPYvHAZgWoYwlqvKkdXqOr';
     $database = getenv('MYSQLDATABASE') ?: getenv('DB_NAME') ?: 'recoltepure';
     $port = getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: 3306;
 
