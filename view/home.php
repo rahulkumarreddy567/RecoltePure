@@ -1,78 +1,79 @@
-<?php include 'view/layout/header.php';?>
+<?php include 'view/layout/header.php'; ?>
 
 <?php if ($userData['role'] === 'farmer'): ?>
     <div class="farmer-actions">
-    <a href="index.php?page=upload_product" class="btn-upload">
-        Upload Products
-    </a>
-</div>
+        <a href="index.php?page=upload_product" class="btn-upload">
+            Upload Products
+        </a>
+    </div>
 
 <?php endif; ?>
 
 <section class="hero">
     <div class="hero-content">
-      <h1>
-        Healty <span class="highlight1">Eating is <br>an </span><span class="highlight2"> Important </span>Part <br>of Lifestyle
-      </h1>
-      <p>Straight from the farm to your doorstep, Quality you can trust every day.</p>
-      <a href="/RecoltePure/categories">
-    <button class="explore-btn">Explore Now</button>
-</a>
+        <h1>
+            Healty <span class="highlight1">Eating is <br>an </span><span class="highlight2"> Important </span>Part
+            <br>of Lifestyle
+        </h1>
+        <p>Straight from the farm to your doorstep, Quality you can trust every day.</p>
+        <a href="/categories">
+            <button class="explore-btn">Explore Now</button>
+        </a>
     </div>
 
     <div class="hero-image">
-      <img src="assets/uploads/products/homepage.png" alt="Food Bowl">
-      </div>
-   </section>
+        <img src="assets/uploads/products/homepage.png" alt="Food Bowl">
+    </div>
+</section>
 
 
 
-   <h1 class="fm-heading" id="products">Our Categories</h1>
-   <br>
+<h1 class="fm-heading" id="products">Our Categories</h1>
+<br>
 <div class="homepage-wrapper">
     <div class="homepage-carousel">
-      <button class="homepage-nav-btn" id="homepage-prev">❮</button>
-      <div class="homepage-cards">
-        <div class="homepage-card homepage-pink">
-          <img src="assets/uploads/products/fruits.png" alt="fruits">
-          <h3>Fruits</h3>
-          <a href="index.php?page=categories&category_id=1">
-          <button class="homepage-order-btn">Order Now</button>
-          </a>
-        </div>
+        <button class="homepage-nav-btn" id="homepage-prev">❮</button>
+        <div class="homepage-cards">
+            <div class="homepage-card homepage-pink">
+                <img src="assets/uploads/products/fruits.png" alt="fruits">
+                <h3>Fruits</h3>
+                <a href="index.php?page=categories&category_id=1">
+                    <button class="homepage-order-btn">Order Now</button>
+                </a>
+            </div>
 
-        <div class="homepage-card homepage-orange">
-          <img src="assets/uploads/products/vegetables.png" alt="vegetables">
-          <h3>Vegetables</h3>
-          <a href="index.php?page=categories&category_id=2">
-          <button class="homepage-order-btn">Order Now</button>
-          </a>
-        </div>
+            <div class="homepage-card homepage-orange">
+                <img src="assets/uploads/products/vegetables.png" alt="vegetables">
+                <h3>Vegetables</h3>
+                <a href="index.php?page=categories&category_id=2">
+                    <button class="homepage-order-btn">Order Now</button>
+                </a>
+            </div>
 
-        <div class="homepage-card homepage-green">
-          <img src="assets/uploads/products/dairyproducts.png" alt="dairyproducts">
-          <h3>Dairy Products</h3>
-          <a href="index.php?page=categories&category_id=4">
-          <button class="homepage-order-btn">Order Now</button>
-          </a>
-        </div>
+            <div class="homepage-card homepage-green">
+                <img src="assets/uploads/products/dairyproducts.png" alt="dairyproducts">
+                <h3>Dairy Products</h3>
+                <a href="index.php?page=categories&category_id=4">
+                    <button class="homepage-order-btn">Order Now</button>
+                </a>
+            </div>
 
-        
 
-        <div class="homepage-card homepage-red">
-          <img src="assets/uploads/products/herbss.webp" alt="herbs">
-          <h3>Herbs</h3>
-          <a href="index.php?page=categories&category_id=3">
-          <button class="homepage-order-btn">Order Now</button>
-          </a>
+
+            <div class="homepage-card homepage-red">
+                <img src="assets/uploads/products/herbss.webp" alt="herbs">
+                <h3>Herbs</h3>
+                <a href="index.php?page=categories&category_id=3">
+                    <button class="homepage-order-btn">Order Now</button>
+                </a>
+            </div>
         </div>
-      </div>
-      <button class="homepage-nav-btn" id="homepage-next">❯</button>
+        <button class="homepage-nav-btn" id="homepage-next">❯</button>
     </div>
-   </div>
+</div>
 
 
-   <!-- <br><br>
+<!-- <br><br>
    <div class="fm-container">
         <h1 class="fm-heading" id="categories">Our Categories</h1>
         <div class="fm-content">
@@ -127,12 +128,12 @@
             <button class="nav-btn"><i class="fas fa-arrow-left"></i></button>
             <button class="nav-btn active"><i class="fas fa-arrow-right"></i></button>
         </div>
-        </div>
+    </div>
 
     <div class="carousel-wrapper">
         <?php if (!empty($bestSellingProducts)): ?>
             <?php foreach ($bestSellingProducts as $product): ?>
-                
+
                 <form action="index.php?page=cart" method="POST" class="card">
                     <?php if ($product['old_price'] > $product['price']): ?>
                         <div class="badge">
@@ -142,8 +143,7 @@
 
                     <div class="card-image-wrapper">
                         <img src="assets/uploads/products/<?= htmlspecialchars($product['image']); ?>"
-                             alt="<?= htmlspecialchars($product['product_name']); ?>"
-                             class="card-image">
+                            alt="<?= htmlspecialchars($product['product_name']); ?>" class="card-image">
                     </div>
 
                     <div class="card-content">
@@ -151,7 +151,8 @@
                         <h3 class="card-title"><?= htmlspecialchars($product['product_name']); ?></h3>
                         <div class="card-price">
                             $<?= number_format($product['price'], 2); ?>
-                            <span style="font-size: 0.8rem; color: #555; margin-left:5px;"> / <?= $product['stock_quantity']; ?> kg</span>
+                            <span style="font-size: 0.8rem; color: #555; margin-left:5px;"> / <?= $product['stock_quantity']; ?>
+                                kg</span>
                             <span class="card-unit"></span>
                         </div>
                     </div>
@@ -159,8 +160,9 @@
                     <input type="hidden" name="product_id" value="<?= $product['product_id']; ?>">
                     <input type="hidden" name="product_name" value="<?= htmlspecialchars($product['product_name']); ?>">
                     <input type="hidden" name="price" value="<?= $product['price']; ?>">
-                    <input type="hidden" name="image" value="assets/uploads/products/<?= htmlspecialchars($product['image']); ?>">
-                    
+                    <input type="hidden" name="image"
+                        value="assets/uploads/products/<?= htmlspecialchars($product['image']); ?>">
+
                     <div class="product-card">
                         <div class="card-actions">
                             <div class="counter">
