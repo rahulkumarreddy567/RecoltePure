@@ -13,7 +13,27 @@
 
                     <div class="category-item">
                         <div class="cat-img-wrapper">
-                            <img src="/assets/uploads/products/Fruits.png" alt="Category">
+                            <?php
+                            $catImg = 'default.png';
+                            switch ($cat['category_id']) {
+                                case 1:
+                                    $catImg = 'fruits.png';
+                                    break;
+                                case 2:
+                                    $catImg = 'vegetable.png';
+                                    break;
+                                case 3:
+                                    $catImg = 'herbs.png';
+                                    break;
+                                case 4:
+                                    $catImg = 'dairyproducts.png';
+                                    break;
+                                default:
+                                    $catImg = 'fruits.png';
+                            }
+                            ?>
+                            <img src="/assets/uploads/products/<?= $catImg; ?>"
+                                alt="<?= htmlspecialchars($cat['category_name']); ?>">
                         </div>
                         <h4><?= ucfirst($cat['category_name']); ?></h4>
                     </div>
