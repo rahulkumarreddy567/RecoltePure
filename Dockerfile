@@ -10,9 +10,11 @@ RUN apt-get update && apt-get install -y \
 # Install required PHP extensions
 RUN docker-php-ext-install mysqli
 
-# Manually remove all conflicting MPMs to ensure a clean state
-RUN rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf \
-    && a2enmod mpm_prefork
+# Copy and set up entrypoint script for runtime configuration
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+CMD ["docker-entrypoint.sh"]
 
 RUN a2enmod rewrite
 
