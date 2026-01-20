@@ -1,15 +1,18 @@
 <?php
 
 
-class Product {
+class Product
+{
     private $db;
 
-    public function __construct($dbConnection) {
+    public function __construct($dbConnection)
+    {
         $this->db = $dbConnection;
     }
 
-    public function getBestSellingProducts($limit = 10) {
-       $sql = "
+    public function getBestSellingProducts($limit = 10)
+    {
+        $sql = "
         SELECT 
             p.product_id,
             p.product_name,
@@ -31,26 +34,35 @@ class Product {
         LIMIT ?
     ";
 
-    $stmt = $this->db->prepare($sql);
-    $stmt->bind_param("i", $limit);
-    $stmt->execute();
-    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-
-        $products = [];
-        while ($row = $result->fetch_assoc()) {
-            $products[] = $row;
+        $stmt = $this->db->prepare($sql);
+        if (!$stmt) {
+            // Table likely missing or SQL error
+            error_log("DB Error in getBestSellingProducts: " . $this->db->error);
+            return [];
         }
-        
-        return $products;
+
+        $stmt->bind_param("i", $limit);
+        if (!$stmt->execute()) {
+            error_log("Execute failed in getBestSellingProducts: " . $stmt->error);
+            return [];
+        }
+
+        $result = $stmt->get_result();
+        if (!$result) {
+            return [];
+        }
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 
-    public function getAllCategories() {
+    public function getAllCategories()
+    {
         $result = $this->db->query("SELECT * FROM categories");
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function countProducts($search, $categoryId) {
+    public function countProducts($search, $categoryId)
+    {
         $sql = "SELECT COUNT(*) as total FROM products WHERE 1=1";
         $params = [];
         $types = "";
@@ -78,7 +90,8 @@ class Product {
         return $result['total'];
     }
 
-    public function getProducts($search, $categoryId, $sort, $offset, $limit) {
+    public function getProducts($search, $categoryId, $sort, $offset, $limit)
+    {
         $sql = "SELECT * FROM products WHERE 1=1";
         $params = [];
         $types = "";
@@ -100,11 +113,21 @@ class Product {
 
         // Sorting
         switch ($sort) {
-            case 'low':    $sql .= " ORDER BY price ASC"; break;
-            case 'high':   $sql .= " ORDER BY price DESC"; break;
-            case 'newest': $sql .= " ORDER BY created_on DESC"; break;
-            case 'oldest': $sql .= " ORDER BY created_on ASC"; break;
-            default:       $sql .= " ORDER BY product_id DESC"; break;
+            case 'low':
+                $sql .= " ORDER BY price ASC";
+                break;
+            case 'high':
+                $sql .= " ORDER BY price DESC";
+                break;
+            case 'newest':
+                $sql .= " ORDER BY created_on DESC";
+                break;
+            case 'oldest':
+                $sql .= " ORDER BY created_on ASC";
+                break;
+            default:
+                $sql .= " ORDER BY product_id DESC";
+                break;
         }
 
         // Pagination Limit
