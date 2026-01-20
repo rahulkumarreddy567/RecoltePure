@@ -5,6 +5,15 @@ $password = getenv('DB_PASS') ?: '';
 $database = getenv('DB_NAME') ?: 'recoltepure';
 $port = getenv('DB_PORT') ?: getenv('MYSQLPORT') ?: 3306;
 
+$servername = str_replace('tcp://', '', $servername);
+
+// Handle host:port format if present
+if (strpos($servername, ':') !== false) {
+    list($host, $p) = explode(':', $servername);
+    $servername = $host;
+    $port = $p;
+}
+
 // Safety check: Port 80 is HTTP, not MySQL. if 80 is detected, revert to default 3306
 if ($port == 80) {
     $port = 3306;
