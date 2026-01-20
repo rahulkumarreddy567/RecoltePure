@@ -362,7 +362,7 @@ CREATE TABLE `users` (
   `customer_id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `phone_number` int(10) NOT NULL,
+  `phone_number` int(10) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `registration_date` datetime DEFAULT NULL
