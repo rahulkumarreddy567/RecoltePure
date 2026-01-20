@@ -24,7 +24,6 @@ runQuery($db, "ALTER TABLE users MODIFY customer_id INT(11) NOT NULL AUTO_INCREM
 runQuery($db, "ALTER TABLE users MODIFY phone_number INT(10) NULL DEFAULT NULL", "Fixing phone_number NULLABLE");
 
 // 2. Add Missing Payment Columns to order_or_cart
-// We check if the column exists first to avoid SQL syntax errors on older MySQL versions that don't support 'IF NOT EXISTS'
 $columnsToAdd = [
     'payment_status' => "VARCHAR(50) DEFAULT 'Pending'",
     'payment_method' => "VARCHAR(50) DEFAULT NULL",
@@ -44,6 +43,14 @@ foreach ($columnsToAdd as $col => $def) {
         runQuery($db, $sql, "Adding column $col");
     }
 }
+
+echo "<h3>Current Table Structure (order_or_cart):</h3>";
+echo "<pre>";
+$result = $db->query("DESCRIBE order_or_cart");
+while ($row = $result->fetch_assoc()) {
+    print_r($row);
+}
+echo "</pre>";
 
 echo "<h3>Done. Try registering and ordering again.</h3>";
 ?>
