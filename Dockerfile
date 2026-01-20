@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y \
 # Install required PHP extensions
 RUN docker-php-ext-install mysqli
 
+# Set ServerName to suppress AH00558 warning
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 # Copy and set up entrypoint script for runtime configuration
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh
