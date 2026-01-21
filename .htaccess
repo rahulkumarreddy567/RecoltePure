@@ -1,5 +1,6 @@
 RewriteEngine On
 Options -MultiViews
+# .htaccess fixed version 3
 
 # -------------------------------------------------
 # Remove index.php from URLs
