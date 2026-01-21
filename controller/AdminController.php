@@ -106,7 +106,7 @@ class AdminController
     private function ensureAdmin()
     {
         if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-            header('Location: /admin/login');
+            header('Location: index.php?page=admin&action=login');
             exit;
         }
     }
@@ -123,7 +123,7 @@ class AdminController
             if ($row && password_verify($password, $row['password_hash'])) {
                 $_SESSION['is_admin'] = true;
                 $_SESSION['admin_email'] = $email;
-                header('Location: /admin');
+                header('Location: index.php?page=admin&action=dashboard');
 
                 exit;
             } else {
@@ -288,11 +288,11 @@ class AdminController
             $success = $this->model->deleteProductById($productId);
 
             if ($success) {
-                header('Location: /admin/all_products?status=deleted');
+                header('Location: index.php?page=admin&action=all_products&status=deleted');
                 exit();
             }
         }
-        header('Location: /admin/all_products?status=error');
+        header('Location: index.php?page=admin&action=all_products&status=error');
     }
 
 
