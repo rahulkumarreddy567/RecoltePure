@@ -2,3 +2,4 @@ vendor/
 .env
 .git
 node_modules/
+originals_without_mvc/

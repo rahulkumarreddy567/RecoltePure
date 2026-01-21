@@ -8,7 +8,7 @@
     <div class="footer-content">
         <div class="brand-col">
             <div class="logo">
-                <img src="assets/uploads/products/Logo.png" alt="RecoltePure Logo" sizes="4x4"/>
+                <img src="assets/uploads/products/Logo.png" alt="RecoltePure Logo" sizes="4x4" />
                 <div class="logo-text">
                     <span>RecoltePure</span>
                     <span></span>
@@ -16,7 +16,7 @@
             </div>
             <br>
             <div class="social-icons">
-                
+
             </div>
         </div>
 
@@ -24,26 +24,26 @@
             <h3>Categories</h3>
             <ul>
                 <ul>
-                    <li><a href="/RecoltePure/categories/1">Fruits</a></li>
-                    <li><a href="/RecoltePure/categories/4">Dairy Products</a></li>
-                    <li><a href="/RecoltePure/categories/2">Vegetables</a></li>
-                    <li><a href="/RecoltePure/categories/3">Herbs</a></li>
+                    <li><a href="/categories/1">Fruits</a></li>
+                    <li><a href="/categories/4">Dairy Products</a></li>
+                    <li><a href="/categories/2">Vegetables</a></li>
+                    <li><a href="/categories/3">Herbs</a></li>
                 </ul>
 
-               
+
             </ul>
         </div>
 
         <div class="links-col">
             <h3>Useful Links</h3>
             <ul>
-                <li><a href="/RecoltePure/faq">FAQ</a></li>
+                <li><a href="index.php?page=faq">FAQ</a></li>
         </div>
 
         <div class="newsletter-col">
             <h3>Newsletter</h3>
             <p class="newsletter-text">Get now free 20% discount for all products on your first order</p>
-            
+
             <form class="newsletter-form">
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" placeholder="Your Email address...">
@@ -62,10 +62,10 @@
     <div class="copyright">
         &copy; 2025 RecoltePure. All rights reserved.
     </div>
-    
+
     <div class="bottom-links">
-        <a href="/RecoltePure/terms-and-conditions">Terms & Conditions</a>
-        
+        <a href="/terms-and-conditions">Terms & Conditions</a>
+
     </div>
 
     <div class="payment-icons">
@@ -77,4 +77,5 @@
 
 
 </body>
+
 </html>

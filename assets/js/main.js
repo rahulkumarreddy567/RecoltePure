@@ -5,21 +5,21 @@ document.addEventListener("DOMContentLoaded", function () {
     if (productCards.length > 0) {
         productCards.forEach(card => {
             const minusBtn = card.querySelector(".minus, .qty-btn[value='decrease']");
-            const plusBtn  = card.querySelector(".plus, .qty-btn[value='increase']");
-            
-            const counterInput = card.querySelector(".counter-input, .qty-input"); 
-            
-            const hiddenInput = card.querySelector(".quantity-input, input[name='quantity']"); 
+            const plusBtn = card.querySelector(".plus, .qty-btn[value='increase']");
+
+            const counterInput = card.querySelector(".counter-input, .qty-input");
+
+            const hiddenInput = card.querySelector(".quantity-input, input[name='quantity']");
 
             // Only run if this specific card has the buttons
             if (plusBtn && counterInput) {
                 plusBtn.addEventListener("click", (e) => {
                     // If it's a submit button (like in cart), don't prevent default submission
-                    if(plusBtn.type !== 'submit') {
-                         let value = parseInt(counterInput.value);
-                         value++;
-                         counterInput.value = value;
-                         if(hiddenInput) hiddenInput.value = value;
+                    if (plusBtn.type !== 'submit') {
+                        let value = parseInt(counterInput.value);
+                        value++;
+                        counterInput.value = value;
+                        if (hiddenInput) hiddenInput.value = value;
                     }
                 });
             }
@@ -27,22 +27,22 @@ document.addEventListener("DOMContentLoaded", function () {
             if (minusBtn && counterInput) {
                 minusBtn.addEventListener("click", (e) => {
                     // If it's a submit button (like in cart), don't prevent default submission
-                    if(minusBtn.type !== 'submit') {
+                    if (minusBtn.type !== 'submit') {
                         let value = parseInt(counterInput.value);
                         if (value > 1) value--;
                         counterInput.value = value;
-                        if(hiddenInput) hiddenInput.value = value;
+                        if (hiddenInput) hiddenInput.value = value;
                     }
                 });
             }
         });
     }
 
-    
+
     const navbar = document.querySelector(".navbar");
     if (navbar) {
-        window.addEventListener("scroll", function() {
-            if (window.scrollY > 100) { 
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 100) {
                 navbar.classList.add("scrolled");
             } else {
                 navbar.classList.remove("scrolled");
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (carouselWrapper && navBtns.length >= 2) {
         const prevBtn = navBtns[0];
         const nextBtn = navBtns[1];
-        const scrollAmount = 270; 
+        const scrollAmount = 270;
 
         nextBtn.addEventListener("click", () => {
             carouselWrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (userBtn && dropdown) {
         userBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); 
+            e.stopPropagation();
             dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
         });
 
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-   
+
     const searchForm = document.querySelector('.search-box');
     const searchBtn = document.querySelector('.search-btn');
     const searchInput = document.querySelector('.search-input');
@@ -123,10 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (searchForm && searchBtn) {
         searchBtn.addEventListener('click', (e) => {
             if (!searchForm.classList.contains('active')) {
-                e.preventDefault(); 
-                searchForm.classList.add('active'); 
-                searchInput.focus(); 
-            } 
+                e.preventDefault();
+                searchForm.classList.add('active');
+                searchInput.focus();
+            }
             else if (searchInput.value.trim() === '') {
                 e.preventDefault();
                 searchForm.classList.remove('active');
@@ -139,21 +139,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelector('.nav-links');
 
     menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+        navLinks.classList.toggle('active');
     });
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const searchForm = document.querySelector('.search-form');
     if (searchForm) {
-        searchForm.addEventListener('submit', function(e) {
+        searchForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const searchInput = this.querySelector('input[name="search"]');
             const search = searchInput.value.trim();
-            
+
             const categoryId = this.dataset.categoryId || 1;
-            let url = `/RecoltePure/categories/${categoryId}`;
+            let url = `/categories/${categoryId}`;
             if (search.length > 0) {
                 url += `/search/${encodeURIComponent(search)}`;
             }
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const productWrappers = document.querySelectorAll('.product-img-wrapper');
 
     productWrappers.forEach(wrapper => {
@@ -178,14 +178,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
             interval = setInterval(() => {
                 index = (index + 1) % images.length;
-                imgTag.src = `/RecoltePure/assets/uploads/products/${images[index]}`;
+                imgTag.src = `/assets/uploads/products/${images[index]}`;
             }, 800); // swap every 800ms
         });
 
         wrapper.addEventListener('mouseleave', () => {
             clearInterval(interval);
             index = 0;
-            imgTag.src = `/RecoltePure/assets/uploads/products/${images[0]}`;
+            imgTag.src = `/assets/uploads/products/${images[0]}`;
         });
     });
 });

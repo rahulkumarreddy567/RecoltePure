@@ -1,26 +1,21 @@
 <?php
-include '../layouts/header.php ';
+include 'view/layout/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Contact Us - Recolte Pure</title>
-    <link rel="stylesheet" href="assets/css/Contact.css">
+    <link rel="stylesheet" href="assets/css/Contact.css?v=4">
 </head>
+
 <body>
     <section class="hero">
-        <div class="back-home">
-            <a href="index.php?page=home">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                Back to Home
-            </a>
-        </div>
         <div class="hero-content">
             <h1>Get In Touch</h1>
-            <p>We'd love to hear from you! Whether you have questions about our products or want to become a vendor, reach out to us.</p>
+            <p>We'd love to hear from you! Whether you have questions about our products or want to become a vendor,
+                reach out to us.</p>
         </div>
     </section>
 
@@ -47,7 +42,7 @@ include '../layouts/header.php ';
                     </div>
                     <div class="info-card-content">
                         <p>Main: <a href="tel:+33145678901">+33 1 45 67 89 01</a><br>
-                        Vendor: <a href="tel:+33145678902">+33 1 45 67 89 02</a></p>
+                            Vendor: <a href="tel:+33145678902">+33 1 45 67 89 02</a></p>
                     </div>
                 </div>
 
@@ -58,25 +53,25 @@ include '../layouts/header.php ';
                     </div>
                     <div class="info-card-content">
                         <p>General: <a href="mailto:contact@recoltepure.fr">contact@recoltepure.fr</a><br>
-                        Vendors: <a href="mailto:vendeurs@recoltepure.fr">vendeurs@recoltepure.fr</a></p>
+                            Vendors: <a href="mailto:vendeurs@recoltepure.fr">vendeurs@recoltepure.fr</a></p>
                     </div>
                 </div>
             </div>
 
-        <div class="form-container">
-            <div class="form-header">
-                <h2>Send Us a Message</h2>
-            </div>
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Send Us a Message</h2>
+                </div>
 
-            <?php if (isset($successMsg)): ?>
-                <div class="alert alert-success"><?php echo $successMsg; ?></div>
-            <?php endif; ?>
+                <?php if (isset($successMsg)): ?>
+                    <div class="alert alert-success"><?php echo $successMsg; ?></div>
+                <?php endif; ?>
 
-            <?php if (isset($errorMsg)): ?>
-                <div class="alert alert-error"><?php echo $errorMsg; ?></div>
-            <?php endif; ?>
+                <?php if (isset($errorMsg)): ?>
+                    <div class="alert alert-error"><?php echo $errorMsg; ?></div>
+                <?php endif; ?>
 
-            <form action="index.php?page=contact" method="POST" id="contactForm">
+                <form action="index.php?page=contact" method="POST" id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name <span class="required">*</span></label>
@@ -120,28 +115,27 @@ include '../layouts/header.php ';
                     </div>
 
                     <button type="submit" class="submit-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="22" y1="2" x2="11" y2="13"/>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13" />
+                            <polygon points="22 2 15 22 11 13 2 9 22 2" />
                         </svg>
                         Send Message
                     </button>
                 </form>
-        </div>
+            </div>
         </div>
 
-    <div class="map-section">
+        <div class="map-section">
             <h2 class="map-title">Find Us On Map</h2>
             <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.94722687767!2d2.277020999999999!3d48.856614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e670ae2e9e6c5f%3A0x1e4d5b95c4e7f87a!2sParis%2C%20France!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.94722687767!2d2.277020999999999!3d48.856614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e670ae2e9e6c5f%3A0x1e4d5b95c4e7f87a!2sParis%2C%20France!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
-    </div>
-            
+        </div>
+
     </div>
 
 
@@ -165,8 +159,9 @@ include '../layouts/header.php ';
     </footer>
 
 
-    
-    
 
-    </body>
+
+
+</body>
+
 </html>

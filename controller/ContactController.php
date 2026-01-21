@@ -1,18 +1,11 @@
 <?php
 // controllers/ContactController.php
 
-// Include the model
-require_once "config/db_connection.php";
-require_once 'model/Contact.php';
+class ContactController
+{
 
-class ContactController {
-    private $model;
-
-    public function __construct($dbConnection) {
-        $this->model = new ContactModel($dbConnection);
-    }
-
-    public function index() {
+    public function index()
+    {
         $errorMsg = null;
         $successMsg = null;
 
@@ -23,42 +16,36 @@ class ContactController {
 
         // Handle POST Request (Form Submission)
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->handleSubmission($errorMsg);
+            $this->handleSubmission($errorMsg, $successMsg);
         }
 
         // Load the View
-        // Note: We use 'include' so the view can access $errorMsg and $successMsg
         include 'view/contact.php';
     }
 
-    private function handleSubmission(&$errorMsg) {
+    private function handleSubmission(&$errorMsg, &$successMsg)
+    {
         // Sanitize
         $firstName = htmlspecialchars(trim($_POST['firstName'] ?? ''));
-        $lastName  = htmlspecialchars(trim($_POST['lastName'] ?? ''));
-        $email     = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
-        $phone     = htmlspecialchars(trim($_POST['phone'] ?? ''));
-        $subject   = htmlspecialchars(trim($_POST['subject'] ?? ''));
-        $message   = htmlspecialchars(trim($_POST['message'] ?? ''));
+        $lastName = htmlspecialchars(trim($_POST['lastName'] ?? ''));
+        $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+        $phone = htmlspecialchars(trim($_POST['phone'] ?? ''));
+        $subject = htmlspecialchars(trim($_POST['subject'] ?? ''));
+        $message = htmlspecialchars(trim($_POST['message'] ?? ''));
 
         // Validate
         if (empty($firstName) || empty($lastName) || empty($email) || empty($subject) || empty($message)) {
             $errorMsg = "Please fill in all required fields.";
             return;
-        } 
-        
+        }
+
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errorMsg = "Please enter a valid email address.";
             return;
         }
 
-        // Save using Model
-        if ($this->model->saveMessage($firstName, $lastName, $email, $phone, $subject, $message)) {
-            // Redirect to the ROUTE, not the file
-            header("Location: index.php?page=contact&status=success");
-            exit();
-        } else {
-            $errorMsg = "Database error. Please try again later.";
-        }
+        // Just show success message (no database save)
+        $successMsg = "Thank you for contacting us! Your message has been received.";
     }
 }
 ?>
