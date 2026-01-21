@@ -137,15 +137,6 @@ class Product
         }
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
->>>>>>> 48a96ddb6036066e08f78c207bf86e544e837861
-    }
-
-    if (!empty($search)) {
-        $sql .= " AND (product_name LIKE ? OR product_description LIKE ?)";
-        $searchTerm = "%$search%";
-        $params[] = $searchTerm;
-        $params[] = $searchTerm;
-        $types .= 'ss';
     }
 
     // Sorting
