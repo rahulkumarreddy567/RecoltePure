@@ -62,7 +62,7 @@
             </div>
 
             <!-- LOGIN FORM -->
-            <form method="POST" action="/RecoltePure/index.php?page=login">
+            <form method="POST" action="/RecoltePure/login">
 
 
                 <!-- ERROR MESSAGE FROM CONTROLLER -->

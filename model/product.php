@@ -78,47 +78,50 @@ class Product {
         return $result['total'];
     }
 
-    public function getProducts($search, $categoryId, $sort, $offset, $limit) {
-        $sql = "SELECT * FROM products WHERE 1=1";
-        $params = [];
-        $types = "";
+    public function getProducts($search = '', $categoryId = null, $sort = '', $offset = 0, $limit = 12) {
+    $sql = "SELECT * FROM products WHERE 1=1";
 
-        // Filters
-        if (!empty($search)) {
-            $sql .= " AND (product_name LIKE ? OR product_description LIKE ?)";
-            $searchTerm = "%$search%";
-            $params[] = $searchTerm;
-            $params[] = $searchTerm;
-            $types .= "ss";
-        }
+    $params = [];
+    $types = '';
 
-        if ($categoryId > 0) {
-            $sql .= " AND category_id = ?";
-            $params[] = $categoryId;
-            $types .= "i";
-        }
-
-        // Sorting
-        switch ($sort) {
-            case 'low':    $sql .= " ORDER BY price ASC"; break;
-            case 'high':   $sql .= " ORDER BY price DESC"; break;
-            case 'newest': $sql .= " ORDER BY created_on DESC"; break;
-            case 'oldest': $sql .= " ORDER BY created_on ASC"; break;
-            default:       $sql .= " ORDER BY product_id DESC"; break;
-        }
-
-        // Pagination Limit
-        $sql .= " LIMIT ?, ?";
-        $params[] = $offset;
-        $params[] = $limit;
-        $types .= "ii";
-
-        $stmt = $this->db->prepare($sql);
-        if (!empty($params)) {
-            $stmt->bind_param($types, ...$params);
-        }
-        $stmt->execute();
-        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    if ($categoryId !== null) {
+        $sql .= " AND category_id = ?";
+        $params[] = $categoryId;
+        $types .= 'i';
     }
+
+    if (!empty($search)) {
+        $sql .= " AND (product_name LIKE ? OR product_description LIKE ?)";
+        $searchTerm = "%$search%";
+        $params[] = $searchTerm;
+        $params[] = $searchTerm;
+        $types .= 'ss';
+    }
+
+    // Sorting
+    if ($sort === 'price_asc') $sql .= " ORDER BY price ASC";
+    elseif ($sort === 'price_desc') $sql .= " ORDER BY price DESC";
+    else $sql .= " ORDER BY product_name ASC";
+
+    $sql .= " LIMIT ?, ?";
+    $params[] = $offset;
+    $params[] = $limit;
+    $types .= 'ii';
+
+    $stmt = $this->db->prepare($sql);
+    if ($stmt === false) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    // Bind parameters dynamically
+    if (!empty($params)) {
+        $stmt->bind_param($types, ...$params);
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
 }
 ?>
