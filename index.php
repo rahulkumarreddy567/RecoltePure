@@ -24,10 +24,18 @@ switch ($page) {
         $controller = new OrderController($db);
         $userId = $_SESSION['user_id'];
         $cartItems = $_SESSION['cart'];
-        // Optionally get Stripe payment info from session if set
-        $transactionId = $_SESSION['stripe_transaction_id'] ?? null;
-        $paymentMethod = $_SESSION['stripe_payment_method'] ?? null;
-        $amountPaid = $_SESSION['stripe_amount_paid'] ?? null;
+
+        // Calculate total amount from cart
+        $totalAmount = 0;
+        foreach ($cartItems as $item) {
+            $totalAmount += $item['price'] * $item['quantity'];
+        }
+
+        // Get Stripe payment info from session if set, otherwise use defaults
+        $transactionId = $_SESSION['stripe_transaction_id'] ?? 'STRIPE_' . time();
+        $paymentMethod = $_SESSION['stripe_payment_method'] ?? 'Stripe';
+        $amountPaid = $_SESSION['stripe_amount_paid'] ?? $totalAmount;
+
         if ($controller->createOrder($userId, $cartItems, $transactionId, $paymentMethod, $amountPaid)) {
             unset($_SESSION['cart']);
             unset($_SESSION['stripe_transaction_id'], $_SESSION['stripe_payment_method'], $_SESSION['stripe_amount_paid']);
