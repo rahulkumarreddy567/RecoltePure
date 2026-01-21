@@ -1,3 +1,9 @@
+<?php
+if (!isset($cartItems)) {
+    header("Location: ../index.php?page=cart");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -66,7 +66,7 @@
     </div>
     
     <div class="bottom-links">
-        <a href="view/terms_and_conditions.php">Terms & Conditions</a>
+        <a href="index.php?page=terms">Terms & Conditions</a>
         
     </div>
 

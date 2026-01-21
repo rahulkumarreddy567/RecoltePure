@@ -1,8 +1,8 @@
-<?php include 'view/layout/header.php'; ?>
+<?php require_once __DIR__ . '/layout/header.php'; ?>
 
 <style>
     .farmers-page {
-        background-color: #f9f9f9;
+        background-color: #FEF1E1;
         padding: 40px 20px;
         min-height: 80vh;
         font-family: 'Poppins', sans-serif;
@@ -15,7 +15,7 @@
         margin: 0 auto;
     }
     .farmer-card {
-        background: white;
+        background: #FFF6ED;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         overflow: hidden;
@@ -91,21 +91,20 @@
     }
     .mini-price {
         font-size: 0.8rem;
-        color: #4CAF50;
+        color: #ff4d2d;
         text-align: center;
         font-weight: bold;
     }
     .btn-visit {
         display: block;
         text-align: center;
-        background: #2c3e50;
-        color: #fff;
+        background: #ff4d2d;
         padding: 12px;
         text-decoration: none;
         transition: 0.3s;
     }
     .btn-visit:hover {
-        background: #4CAF50;
+        background: #e04328;
     }
 </style>
 

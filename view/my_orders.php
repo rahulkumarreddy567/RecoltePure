@@ -1,4 +1,10 @@
-<?php include 'view/layout/header.php'; ?>
+<?php 
+if (!isset($orders)) {
+    header("Location: ../index.php?page=orders");
+    exit;
+}
+require_once __DIR__ . '/layout/header.php'; 
+?>
 
 <style>
     .orders-container {

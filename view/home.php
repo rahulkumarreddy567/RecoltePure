@@ -1,4 +1,10 @@
-<?php include 'view/layout/header.php';?>
+<?php 
+if (!isset($bestSellingProducts)) {
+    header("Location: ../index.php?page=home");
+    exit;
+}
+require_once __DIR__ . '/layout/header.php';
+?>
 
 <?php if ($userData['role'] === 'farmer'): ?>
     <div class="farmer-actions">
@@ -186,4 +192,4 @@
 
 
 
-<?php include 'view/layout/footer.php'; ?>
+<?php require_once __DIR__ . '/layout/footer.php'; ?>

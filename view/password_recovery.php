@@ -27,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['pwd_reset'] = $_SESSION['pwd_reset'] ?? [];
         // Store per-email token for a short-lived session-based reset
         $_SESSION['pwd_reset'][$email] = ['token' => $token, 'created' => time()];
-        $resetLink = 'http://localhost/RecoltePure/view/reset_password.php?email=' . urlencode($email) . '&token=' . urlencode($token);
+        // Use index.php routing instead of direct view access
+        $resetLink = 'http://localhost/RecoltePure/index.php?page=reset_password&email=' . urlencode($email) . '&token=' . urlencode($token);
         $message = 'If this email is registered, a recovery link has been generated below (local test).';
     }
 }

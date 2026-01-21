@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecoltePure - Registration</title>
-    <link rel="stylesheet" href="assets/css/registration.css">
-</head>
-<body>
-    <div class="header">
-        <div class="logo">
-            <div class="logo-circle">
-                <img src="assets/uploads/products/Logo.png" alt="Logo Icon" class="logo-icon">
-            </div>
-            <span class="logo-name">RecoltePure</span>
-        </div>
-    </div>
+<?php require_once __DIR__ . '/layout/header.php'; ?>
 
     <div class="container">
         <div class="left-section">
@@ -92,26 +76,19 @@
                     <div class="checkbox-group">
                         <input type="checkbox" id="terms" name="terms" required>
                         <label for="terms">
-                            I have read and accept <a href="#">the conditions</a> and <a href="#">the privacy policy</a>
+                            I have read and accept <a href="index.php?page=terms">the conditions</a> and <a href="#">the privacy policy</a>
                         </label>
                     </div>
 
-                    <button type="submit" class="submit-btn">Sign Up</button>
+                    <button type="submit" class="submit-btn" style="background:#ff4d2d; color:#fff;">Sign Up</button>
 
                     <div class="login-link">
-                        Already have an account? <a href="index.php?page=login">Log In</a>
+                        Already have an account? <a href="index.php?page=login" style="color:#ff4d2d;">Log In</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 RecoltePure. All rights reserved.</p>
-            
-        </div>
-    </footer>
 
     <div id="successModal" class="success-modal" style="display: none;">
         <div class="success-modal-content">
@@ -163,5 +140,5 @@
             <?php } ?>
         });
     </script>
-</body>
-</html>
+    
+<?php require_once __DIR__ . '/layout/footer.php'; ?>

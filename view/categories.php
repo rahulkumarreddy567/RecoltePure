@@ -1,4 +1,13 @@
-<?php include 'view/layout/header.php'; ?>
+<?php 
+// Prevent direct access to view
+if (!isset($categories)) {
+    header("Location: ../index.php?page=categories");
+    exit;
+}
+require_once __DIR__ . '/layout/header.php'; 
+?>
+
+
 
 <link rel="stylesheet" href="assets/css/categories.css">
 
@@ -22,7 +31,7 @@
 
     <div class="toolbar">
         <div class="showing-text">
-            Showing <?= count($products) > 0 ? $offset + 1 : 0 ?>-<?= min($offset + count($products), $totalItems) ?> of <?= $totalItems ?> Items
+            Showing <?= $prodCount > 0 ? $offset + 1 : 0 ?>-<?= min($offset + $prodCount, $totalItems) ?> of <?= $totalItems ?> Items
         </div>
         <div class="actions">
 
@@ -87,11 +96,11 @@
 
                 <div class="product-footer">
                     <div>
-                        <span class="price">$<?= $product['price']; ?></span>
+                        <span class="price">€<?= $product['price']; ?></span>
                         <span style="font-size: 0.8rem; color: #555; margin-left:5px;"> / <?= $product['stock_quantity']; ?> kg</span>
                         <?php if (!empty($product['old_price']) && $product['old_price'] != $product['price']) : ?>
                             <span class="old-price" style="text-decoration: line-through;">
-                                $<?= $product['old_price']; ?>
+                                €<?= $product['old_price']; ?>
                             </span>
                         <?php endif; ?>
                     </div>

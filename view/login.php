@@ -1,3 +1,9 @@
+<?php
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    header("Location: ../index.php?page=login");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="/RecoltePure/assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 
     <style>
         .error-msg {
@@ -62,7 +68,7 @@
             </div>
 
             <!-- LOGIN FORM -->
-            <form method="POST" action="/RecoltePure/index.php?page=login">
+            <form method="POST" action="index.php?page=login">
 
 
                 <!-- ERROR MESSAGE FROM CONTROLLER -->

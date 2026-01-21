@@ -41,6 +41,7 @@ class CategoryController {
 
         // Fetch Products
         $products = $productModel->getProducts($search, $categoryId, $sort, $offset, $limit);
+        $prodCount = count($products);
 
         // Load View
         require_once __DIR__ . '/../view/categories.php';

@@ -18,10 +18,40 @@ if (!isset($userData)) {
         'initial'      => $initial
     ];
 }
+
+$page = $_GET['page'] ?? 'home';
+$cssFile = 'homepage.css'; // Default
+
+switch ($page) {
+    case 'contact':
+        $cssFile = 'Contact.css';
+        break;
+    case 'terms':
+        $cssFile = 'terms.css';
+        break;
+    case 'cart':
+        $cssFile = 'cart.css';
+        break;
+    case 'categories':
+        $cssFile = 'categories.css';
+        break;
+    case 'login':
+        $cssFile = 'login.css';
+        break;
+    case 'register':
+        $cssFile = 'registration.css';
+        break;
+    // Add other cases as needed
+}
 ?>
 <?php
-require_once __DIR__ . '/../../model/Cart.php';
-$cartCount = Cart::getTotalQuantity();
+// Only include cart model if file exists and we need it
+if (file_exists(__DIR__ . '/../../model/Cart.php')) {
+    require_once __DIR__ . '/../../model/Cart.php';
+    $cartCount = Cart::getTotalQuantity();
+} else {
+    $cartCount = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +61,13 @@ $cartCount = Cart::getTotalQuantity();
   <title>RecoltePure</title>
   
   <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon.png">
+  
+  <!-- Always load homepage.css for navbar styles, but be careful of conflicts -->
   <link rel="stylesheet" href="assets/css/homepage.css" />
+  
+  <?php if ($cssFile !== 'homepage.css'): ?>
+      <link rel="stylesheet" href="assets/css/<?= htmlspecialchars($cssFile) ?>?v=<?= time() ?>" />
+  <?php endif; ?>
   
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -65,12 +101,12 @@ $cartCount = Cart::getTotalQuantity();
         font-weight: 700;
         font-family: sans-serif;
         
-       
+        /* Ensure it's a circle */
         width: 18px;
         height: 18px;
         border-radius: 50%;
         
-     
+        /* Center text */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -92,11 +128,11 @@ $cartCount = Cart::getTotalQuantity();
         </a>
       </div>
       <ul class="nav-links">
-        <li><a href="index.php?page=home" class="active">Home</a></li>
-        <li><a href="index.php?page=categories" class="active">Product</a></li>
-        <li><a href="index.php?page=farmers" class="active">Our Producers</a></li>
-        <li><a href="index.php?page=contact" class="active">Contact Us</a></li>
-        <li><a href="/RecoltePure/view/terms_and_conditions.php" class="active">Terms & Conditions</a></li>
+        <li><a href="index.php?page=home" class="<?= $page === 'home' ? 'active' : '' ?>">Home</a></li>
+        <li><a href="index.php?page=categories" class="<?= $page === 'categories' ? 'active' : '' ?>">Product</a></li>
+        <li><a href="index.php?page=farmers" class="<?= $page === 'farmers' ? 'active' : '' ?>">Our Producers</a></li>
+        <li><a href="index.php?page=contact" class="<?= $page === 'contact' ? 'active' : '' ?>">Contact Us</a></li>
+        <li><a href="index.php?page=terms" class="<?= $page === 'terms' ? 'active' : '' ?>">Terms & Conditions</a></li>
       </ul>
       
       <div class="nav-actions">
@@ -137,5 +173,4 @@ $cartCount = Cart::getTotalQuantity();
 </nav>
   </header>
   <script src="assets/js/main.js" defer></script>
-</body>
-</html>
+

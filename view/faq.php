@@ -1,7 +1,4 @@
-<?php
-
-include 'view/layout/header.php';
-?>
+<?php require_once __DIR__ . '/layout/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,6 +65,6 @@ include 'view/layout/header.php';
       </div>
 
   </div>
-    <? php include 'view/layout/footer.php'; ?>
+    <?php require_once __DIR__ . '/layout/footer.php'; ?>
 </body>
 </html>

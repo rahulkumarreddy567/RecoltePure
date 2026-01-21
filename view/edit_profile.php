@@ -1,4 +1,4 @@
-<?php include 'view/layout/header.php'; ?>
+<?php require_once __DIR__ . '/layout/header.php'; ?>
 
 <style>
     .edit-container { max-width: 600px; margin: 50px auto; padding: 20px; font-family: 'Poppins', sans-serif; }

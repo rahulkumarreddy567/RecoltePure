@@ -1,4 +1,10 @@
-<?php include 'view/layout/header.php'; ?>
+<?php 
+if (!isset($user)) {
+    header("Location: ../index.php?page=profile");
+    exit;
+}
+require_once __DIR__ . '/layout/header.php'; 
+?>
 
 <style>
     .profile-container {

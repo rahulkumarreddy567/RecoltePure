@@ -52,7 +52,7 @@ switch ($page) {
 
     case 'clear':
         require_once "controller/CartController.php";
-        $controller = new CartController();
+        $controller = new CartController($db);
         $controller->handleActions(); 
         break;
 
@@ -143,6 +143,12 @@ switch ($page) {
         require_once 'controller/FarmerController.php';
         $controller = new FarmerController($db);
         $controller->index();
+        break;
+    case 'team':
+        include 'view/best team.php';
+        break;
+    case 'terms':
+        require_once 'view/terms_and_conditions.php';
         break;
 }
 ?>

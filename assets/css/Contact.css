@@ -6,54 +6,21 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f8f9fa;
+    background: #FEF1E1;
     min-height: 100vh;
     line-height: 1.6;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%);
-    color: white;
+    /* background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); Removed green gradient */
+    color: #333;
     padding: 40px 20px 80px;
     position: relative;
     text-align: center;
 }
 
-.back-home {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
 
-.back-home a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.95);
-    color: #2e7d32;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
-}
-
-.back-home a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    background: white;
-}
-
-.back-home svg {
-    transition: transform 0.3s ease;
-}
-
-.back-home a:hover svg {
-    transform: translateX(-3px);
-}
 
 .hero-content {
     max-width: 800px;
@@ -77,7 +44,7 @@ body {
 /* Main Content */
 .container {
     max-width: 1200px;
-    margin: -40px auto 60px;
+    margin: 40px auto 60px;
     padding: 0 20px;
     position: relative;
     z-index: 10;
@@ -85,7 +52,7 @@ body {
 
 .contact-wrapper {
     display: grid;
-    grid-template-columns: 380px 1fr;
+    grid-template-columns: 350px 1fr;
     gap: 30px;
     margin-bottom: 50px;
 }
@@ -98,16 +65,19 @@ body {
 }
 
 .info-card {
-    background: white;
+    background: #FFF6ED;
+    position: relative;
+    bottom: auto;
+    left: auto;
     border-radius: 15px;
     padding: 25px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
 }
 
 .info-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .info-card-header {
@@ -120,7 +90,8 @@ body {
 .info-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    background: #fff;
+    color: #ff4d2d;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -144,23 +115,23 @@ body {
 }
 
 .info-card-content a {
-    color: #2e7d32;
+    color: #ff4d2d;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .info-card-content a:hover {
-    color: #1b5e20;
+    color: #e04328;
     text-decoration: underline;
 }
 
 /* Contact Form */
 .form-container {
-    background: white;
+    background: #FFF6ED;
     border-radius: 15px;
     padding: 40px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
 }
 
 .form-header {
@@ -247,9 +218,9 @@ body {
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #2e7d32;
+    border-color: #ff4d2d;
     background: white;
-    box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
+    box-shadow: 0 0 0 4px rgba(255, 77, 45, 0.1);
 }
 
 .form-group textarea {
@@ -260,7 +231,7 @@ body {
 .submit-btn {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%);
+    background: #ff4d2d;
     color: white;
     border: none;
     border-radius: 10px;
@@ -276,7 +247,7 @@ body {
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+    box-shadow: 0 6px 20px rgba(255, 77, 45, 0.3);
 }
 
 .submit-btn:active {
@@ -285,10 +256,10 @@ body {
 
 /* Map Section */
 .map-section {
-    background: white;
+    background: #FFF6ED;
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
     margin-top: 50px;
 }
 
@@ -304,7 +275,7 @@ body {
     border-radius: 12px;
     overflow: hidden;
     height: 450px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .map-container iframe {
@@ -328,7 +299,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 30px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-logo h3 {
@@ -409,10 +380,7 @@ body {
         font-size: 16px;
     }
 
-    .back-home a {
-        padding: 8px 16px;
-        font-size: 13px;
-    }
+
 
     .form-container {
         padding: 25px 20px;

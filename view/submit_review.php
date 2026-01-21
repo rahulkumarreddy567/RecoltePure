@@ -1,4 +1,4 @@
-<?php include 'view/layout/header.php'; ?>
+<?php require_once __DIR__ . '/layout/header.php'; ?>
 
 <style>
     .review-container {
