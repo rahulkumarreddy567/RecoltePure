@@ -64,6 +64,8 @@ body {
 }
 
 .info-card {
+    position: relative;
+    /* Override homepage.css absolute positioning */
     background: white;
     border-radius: 12px;
     padding: 25px;
