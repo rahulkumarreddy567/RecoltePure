@@ -1,0 +1,35 @@
+RewriteEngine On
+RewriteBase /
+
+# -------------------------------------------------
+# 1. Ignore real files & directories
+# -------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# -------------------------------------------------
+# 2. FRONTEND ROUTES (Clean URLs mapping to index.php)
+# -------------------------------------------------
+RewriteRule ^$ index.php?page=home [L,QSA]
+RewriteRule ^home/?$ index.php?page=home [L,QSA]
+RewriteRule ^login/?$ index.php?page=login [L,QSA]
+RewriteRule ^logout/?$ index.php?page=logout [L,QSA]
+RewriteRule ^register/?$ index.php?page=register [L,QSA]
+RewriteRule ^contact/?$ index.php?page=contact [L,QSA]
+RewriteRule ^faq/?$ index.php?page=faq [L,QSA]
+RewriteRule ^terms-and-conditions/?$ index.php?page=terms_and_conditions [L,QSA]
+RewriteRule ^terms_and_conditions/?$ index.php?page=terms_and_conditions [L,QSA]
+RewriteRule ^profile/?$ index.php?page=profile [L,QSA]
+RewriteRule ^cart/?$ index.php?page=cart [L,QSA]
+RewriteRule ^checkout/?$ index.php?page=checkout [L,QSA]
+RewriteRule ^categories/?$ index.php?page=categories [L,QSA]
+RewriteRule ^farmers/?$ index.php?page=farmers [L,QSA]
+RewriteRule ^my-orders/?$ index.php?page=my_orders [L,QSA]
+
+# -------------------------------------------------
+# 3. ADMIN ROUTES
+# -------------------------------------------------
+RewriteRule ^admin/?$ index.php?page=admin&action=dashboard [L,QSA]
+RewriteRule ^admin/login/?$ index.php?page=admin&action=login [L,QSA]
+RewriteRule ^admin/orders/?$ index.php?page=admin&action=orders [L,QSA]
+RewriteRule ^admin/products/?$ index.php?page=admin&action=all_products [L,QSA]
