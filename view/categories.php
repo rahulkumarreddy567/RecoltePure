@@ -8,7 +8,7 @@
 
         <div class="category-list">
             <?php foreach ($categories as $cat): ?>
-                <a href="/categories/<?= $cat['category_id']; ?>">
+                <a href="index.php?page=categories&category_id=<?= $cat['category_id']; ?>">
 
 
                     <div class="category-item">
@@ -49,7 +49,7 @@
         </div>
         <div class="actions">
 
-            <form method="GET" class="search-form" action="/categories/search/">
+            <form method="GET" class="search-form" action="index.php">
                 <div class="search-group">
                     <input type="text" name="search" placeholder="Search..."
                         value="<?= htmlspecialchars($search ?? '') ?>" required>
@@ -63,7 +63,7 @@
             </span>
 
             <select class="sort-select" style="margin-left: 15px;"
-                onchange="window.location.href='/categories/<?= $categoryId ?>?search=<?= urlencode($search) ?>&sort=' + this.value;">
+                onchange="window.location.href='index.php?page=categories&category_id=<?= $categoryId ?>&search=<?= urlencode($search) ?>&sort=' + this.value;">
                 <option value="low" <?= $sort == 'low' ? 'selected' : '' ?>>Price: Low to High</option>
                 <option value="high" <?= $sort == 'high' ? 'selected' : '' ?>>Price: High to Low</option>
                 <option value="newest" <?= $sort == 'newest' ? 'selected' : '' ?>>Newest Arrivals</option>
@@ -124,7 +124,7 @@
                             <?php endif; ?>
                         </div>
 
-                        <form method="POST" action="/cart">
+                        <form method="POST" action="index.php?page=cart">
 
                             <input type="hidden" name="product_id" value="<?= $product['product_id']; ?>">
                             <input type="hidden" name="product_name" value="<?= htmlspecialchars($product['product_name']); ?>">
@@ -155,19 +155,19 @@
     <div class="pagination">
         <?php if ($page > 1): ?>
             <a class="page-btn"
-                href="/categories/<?= $categoryId ?>/<?= $search ? 'search/' . urlencode($search) . '/' : '' ?>page/<?= $page - 1 ?>">Prev</a>
+                href="index.php?page=categories&category_id=<?= $categoryId ?>&<?= $search ? 'search=' . urlencode($search) . '&' : '' ?>page=<?= $page - 1 ?>">Prev</a>
         <?php endif; ?>
 
         <?php for ($i = 1; $i <= $totalPages; $i++): ?>
             <a class="page-btn <?= ($i == $page) ? 'active' : '' ?>"
-                href="/categories/<?= $categoryId ?>/<?= $search ? 'search/' . urlencode($search) . '/' : '' ?>page/<?= $i ?>">
+                href="index.php?page=categories&category_id=<?= $categoryId ?>&<?= $search ? 'search=' . urlencode($search) . '&' : '' ?>page=<?= $i ?>">
                 <?= $i ?>
             </a>
         <?php endfor; ?>
 
         <?php if ($page < $totalPages): ?>
             <a class="page-btn"
-                href="/categories/<?= $categoryId ?>/<?= $search ? 'search/' . urlencode($search) . '/' : '' ?>page/<?= $page + 1 ?>">Next</a>
+                href="index.php?page=categories&category_id=<?= $categoryId ?>&<?= $search ? 'search=' . urlencode($search) . '&' : '' ?>page=<?= $page + 1 ?>">Next</a>
         <?php endif; ?>
     </div>
 
