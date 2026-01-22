@@ -1,11 +1,10 @@
 RewriteEngine On
 RewriteBase /
 
-# -------------------------------------------------
-# Remove index.php from URLs
-# -------------------------------------------------
-RewriteCond %{THE_REQUEST} /index\.php\?page=([^\s&]+) [NC]
-RewriteRule ^index\.php$ /%1? [R=301,L]
+# COMMENTED OUT: This was breaking MVC navigation by redirecting index.php?page=X to /X
+# and stripping query parameters, causing 404s and empty cart issues
+# RewriteCond %{THE_REQUEST} /index\.php\?page=([^\s&]+) [NC]
+# RewriteRule ^index\.php$ /%1? [R=301,L]
 
 # -------------------------------------------------
 # Ignore real files & directories
@@ -52,7 +51,8 @@ RewriteRule ^update-profile/?$ index.php?page=update_profile [L,QSA]
 # -------------------------------------------------
 # CATEGORIES (with ID, search, pagination)
 # -------------------------------------------------
-RewriteRule ^categories/([1-9][0-9]*)(/search/([^/]+))?(/page/([0-9]+))?/?$ index.php?page=categories&category_id=$1&search=$3&p=$5 [L,QSA]
+RewriteRule ^categories/([1-9][0-9]*)(/search/([^/]+))?(/page/([0-9]+))?/?$
+index.php?page=categories&category_id=$1&search=$3&p=$5 [L,QSA]
 # Search across all categories
 RewriteRule ^categories/search/?$ index.php?page=categories&search=$1 [L,QSA]
 RewriteRule ^categories/search/?$ index.php?page=categories [L,QSA]
@@ -132,7 +132,8 @@ RewriteRule ^faq/?$ index.php?page=faq [L,QSA]
 RewriteRule ^terms-and-conditions/?$ index.php?page=terms_and_conditions [L,QSA]
 
 
-RewriteRule ^categories/([1-9][0-9]*)(/search/([^/]+))?(/page/([0-9]+))?/?$ index.php?page=categories&category_id=$1&search=$3&p=$5 [L,QSA]
+RewriteRule ^categories/([1-9][0-9]*)(/search/([^/]+))?(/page/([0-9]+))?/?$
+index.php?page=categories&category_id=$1&search=$3&p=$5 [L,QSA]
 
 # Default categories page if no ID is given, go to 1
 RewriteRule ^categories/?$ index.php?page=categories&category_id=1 [L,QSA]
